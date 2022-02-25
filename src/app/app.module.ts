@@ -1,3 +1,4 @@
+import { ProductService } from './products/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -22,7 +23,7 @@ import { ProductItemComponent } from './products/product-list/product-item/produ
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

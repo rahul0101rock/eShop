@@ -1,1 +1,19 @@
-<p>product-item works!</p>
+<div class="container">
+    <a style="cursor: pointer;" class="list-group-item clearfix rounded">
+        <div class="float-start">
+            <h4 class="list-group-item-heading">{{product.name}}</h4>
+            <div class="row">
+                <div class="col-9">
+                    <p class="list-group-item-text">{{product.description}}</p>
+                    <p class="list-group-item-text">{{product.price | currency:'INR':'Rs.'}}</p>
+                </div>
+                <div class="col-3">
+                    <div class="float-end">
+                        <img [src]="product.imagePath" alt="{recipe.name}" class="rounded img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </a>
+</div>
