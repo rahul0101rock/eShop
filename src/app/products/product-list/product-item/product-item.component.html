@@ -1,19 +1,20 @@
 <div class="container">
-    <a style="cursor: pointer;" class="list-group-item clearfix rounded">
-        <div class="float-start">
-            <h4 class="list-group-item-heading">{{product.name}}</h4>
-            <div class="row">
-                <div class="col-9">
-                    <p class="list-group-item-text">{{product.description}}</p>
-                    <p class="list-group-item-text">{{product.price | currency:'INR':'Rs.'}}</p>
-                </div>
-                <div class="col-3">
-                    <div class="float-end">
-                        <img [src]="product.imagePath" alt="{recipe.name}" class="rounded img-fluid">
-                    </div>
-                </div>
-            </div>
+    <a style="cursor: pointer;" class="">
+        <div class="card mb-3" style="max-width: 100%;">
+  <div class="row g-0">
+    <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{product.name}}</h5>
+          <p class="card-text">{{product.description}}</p>
+          <p class="card-text h4">{{product.price | currency:'INR':'Rs.'}}</p>
+          <p class="card-text"><small class="text-muted"><span class="badge rounded-pill bg-secondary me-2" *ngFor="let cat of product.category">{{cat}}</span></small></p>
         </div>
-        
+    </div>
+    <div class="col-md-4">
+      <img [src]="product.imagePath" class="img-fluid rounded-start float-end" width="60%">
+    </div>
+  </div>
+</div>
     </a>
 </div>
+
