@@ -1,5 +1,8 @@
-<div class="row mt-4">
-    <div class="col-12">
-        <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" ></app-product-item>
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-3"></div>
+        <div class="col-9">
+            <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" ></app-product-item>
+        </div>
     </div>
 </div>
