@@ -1,6 +1,8 @@
 # EShop
 
+An eCommerce website where users can search and buy products.<br>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.2.
+### https://eshop-rahul.web.app/
 
 ## Development server
 
