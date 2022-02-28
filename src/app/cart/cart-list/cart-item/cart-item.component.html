@@ -14,7 +14,7 @@
                             <button type="button" class="btn btn-outline-light text-secondary" (click)="onDecreaseCount()" [disabled]="cartItem.count <= 1" ><i class="fa fa-minus"></i></button>
                             <div class="btn">{{cartItem.count}}</div>
                             <button type="button" class="btn btn-outline-light text-secondary" (click)="onIncreaseCount()"><i class="fa fa-plus"></i></button>
-                            <a class="btn text-danger" >Remove</a>
+                            <a class="btn text-danger" (click)="onRemoveItem()">Remove</a>
                         </div>
                     </div>
                     <div class="col">
@@ -24,7 +24,6 @@
                 
             </div>
         </div>
-       
     </div>
     </div>
 </div>
