@@ -18,8 +18,11 @@ export class CartService {
     return this.cartItems;
   }
 
-
   addTOCart(cart: Cart){
     this.cartItems.push(cart);
+  }
+
+  changeCount(index: number, newcount: number){
+    this.cartItems[index].count = newcount;
   }
 }

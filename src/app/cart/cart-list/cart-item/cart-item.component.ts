@@ -1,3 +1,4 @@
+import { CartService } from './../../cart.service';
 import { Cart } from './../../cart.model';
 import { Component, Input, OnInit } from '@angular/core';
 
@@ -11,9 +12,19 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem! : Cart;
   @Input() index! : number; 
 
-  constructor() { }
+  constructor(public cartService: CartService) { }
 
   ngOnInit(): void {
+  }
+
+  onIncreaseCount(){
+    const c = this.cartItem.count + 1;
+    this.cartService.changeCount(this.index,c);
+  }
+
+  onDecreaseCount(){
+    const c = this.cartItem.count - 1;
+    this.cartService.changeCount(this.index,c);
   }
 
 }

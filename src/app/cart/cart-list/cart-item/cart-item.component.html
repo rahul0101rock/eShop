@@ -11,14 +11,14 @@
                         <h5 class="card-title h3"><a class="item" [routerLink]="['../products',cartItem.productIndex]">{{cartItem.product.name}}</a></h5>
                         <p class="card-text text-secondary ">  {{cartItem.product.price | currency:'INR':'Rs.'}}</p>
                         <div class="input-group">
-                            <button class="btn btn-outline-light text-secondary"><i class="fa fa-minus"></i></button>
+                            <button type="button" class="btn btn-outline-light text-secondary" (click)="onDecreaseCount()" [disabled]="cartItem.count <= 1" ><i class="fa fa-minus"></i></button>
                             <div class="btn">{{cartItem.count}}</div>
-                            <button class="btn btn-outline-light text-secondary"><i class="fa fa-plus"></i></button>
+                            <button type="button" class="btn btn-outline-light text-secondary" (click)="onIncreaseCount()"><i class="fa fa-plus"></i></button>
                             <a class="btn text-danger" >Remove</a>
                         </div>
                     </div>
                     <div class="col">
-                        <p class="card-text text-primary h4 float-end mx-2">{{cartItem.product.price | currency:'INR':'Rs.'}}</p>
+                        <p class="card-text text-primary h4 float-end mx-2">{{cartItem.product.price * cartItem.count | currency:'INR':'Rs.'}}</p>
                     </div>
                 </div>
                 
