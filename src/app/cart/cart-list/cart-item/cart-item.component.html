@@ -1,1 +1,15 @@
-<p>cart-item works!</p>
+<div class="container">
+    <div class="card mb-3" style="max-width: 100%;">
+    <div class="row g-0">
+        <div class="col-md-8">
+            <div class="card-body">
+            <h5 class="card-title">{{cartItem.product.name}}</h5>
+            <p class="card-text text-primary h4">{{cartItem.product.price | currency:'INR':'Rs.'}}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+        <img [src]="cartItem.product.imagePath" class="img-fluid rounded-start float-end p-2" width="40%">
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,1 +1,7 @@
-<p>cart-list works!</p>
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-9 mx-auto">
+            <app-cart-item *ngFor="let item of cartItems; let i = index" [cartItem]="item" [index]="i" ></app-cart-item>
+        </div>
+    </div>
+</div>
