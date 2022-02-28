@@ -24,4 +24,7 @@ export class ProductDetailComponent implements OnInit {
     );
   }
 
+  onAddToCart(){
+    this.productService.producttoCart(this.product,this.id);
+  }
 }

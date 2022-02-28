@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card container">
     <div class="row">
         <div class="col-2">
             
@@ -9,7 +9,7 @@
     </div>
     <div class="row g-0">
         <div class="col-md-6">
-            <img [src]="product.imagePath" class="img-fluid rounded-start p-4" width="100%">
+            <img [src]="product.imagePath" class="img-fluid rounded-start p-5" width="100%">
         </div>
         <div class="col-md-6">
             <div class="card-body">
@@ -17,7 +17,7 @@
                 <p class="card-text">{{product.description}}</p>
                 <p class="card-text text-primary h4">{{product.price | currency:'INR':'Rs.'}}</p>
                 <p class="card-text"><small class="text-muted"><span class="badge rounded-pill bg-secondary me-2" *ngFor="let cat of product.category">{{cat}}</span></small></p>
-                <button type="button" class="btn btn-outline-warning"><i class="fa fa-cart-plus"></i> Add to cart</button>
+                <button type="button" (click)="onAddToCart()" class="btn btn-outline-warning"><i class="fa fa-cart-plus"></i> Add to cart</button>
             </div>
         </div>
     </div>

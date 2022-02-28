@@ -1,3 +1,4 @@
+import { CartService } from './cart/cart.service';
 import { ProductService } from './products/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,7 +30,7 @@ import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.componen
     BrowserModule,
     AppRoutingModule
   ],
-  providers: [ProductService],
+  providers: [ProductService,CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
