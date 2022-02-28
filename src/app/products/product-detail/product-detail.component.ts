@@ -1,3 +1,5 @@
+import { Cart } from './../../cart/cart.model';
+import { CartService } from './../../cart/cart.service';
 import { ProductService } from './../product.service';
 import { Product } from './../product.model';
 import { Component, OnInit } from '@angular/core';
@@ -12,8 +14,8 @@ export class ProductDetailComponent implements OnInit {
 
   product!: Product;
   id!: number;
-
-  constructor(private productService: ProductService,private route: ActivatedRoute) { }
+  addedToCart= false;
+  constructor(private productService: ProductService,private route: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -22,9 +24,13 @@ export class ProductDetailComponent implements OnInit {
         this.product = this.productService.getProduct(this.id);
       }
     );
+    for(let cartItem of this.cartService.getCartItems()){
+      if(cartItem.product == this.product) this.addedToCart = true;
+    }
   }
 
   onAddToCart(){
     this.productService.producttoCart(this.product,this.id);
+    this.addedToCart =true;
   }
 }

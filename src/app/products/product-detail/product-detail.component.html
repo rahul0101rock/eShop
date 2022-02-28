@@ -17,7 +17,12 @@
                 <p class="card-text">{{product.description}}</p>
                 <p class="card-text text-primary h4">{{product.price | currency:'INR':'Rs.'}}</p>
                 <p class="card-text"><small class="text-muted"><span class="badge rounded-pill bg-secondary me-2" *ngFor="let cat of product.category">{{cat}}</span></small></p>
-                <button type="button" (click)="onAddToCart()" class="btn btn-outline-warning"><i class="fa fa-cart-plus"></i> Add to cart</button>
+                <div *ngIf="!addedToCart; else added">
+                    <button type="button" (click)="onAddToCart()" class="btn btn-outline-warning"><i class="fa fa-cart-plus"></i> Add to cart</button>
+                </div>
+                <ng-template #added>
+                    <i class="text-success"> Added to Cart </i>
+                </ng-template>
             </div>
         </div>
     </div>

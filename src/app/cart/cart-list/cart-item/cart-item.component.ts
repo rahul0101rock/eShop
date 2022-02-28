@@ -12,7 +12,7 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem! : Cart;
   @Input() index! : number; 
 
-  constructor(public cartService: CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
