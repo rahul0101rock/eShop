@@ -1,15 +1,30 @@
 <div class="container">
     <div class="card mb-3" style="max-width: 100%;">
     <div class="row g-0">
-        <div class="col-md-8">
+        <div class="col-md-2">
+            <img [src]="cartItem.product.imagePath" class="img-fluid rounded-start float-start" width="100%">
+        </div>
+        <div class="col-md-10">
             <div class="card-body">
-            <h5 class="card-title">{{cartItem.product.name}}</h5>
-            <p class="card-text text-primary h4">{{cartItem.product.price | currency:'INR':'Rs.'}}</p>
+                <div class="row mt-2">
+                    <div class="col">
+                        <h5 class="card-title h2"><a class="item" [routerLink]="['../products',cartItem.productIndex]">{{cartItem.product.name}}</a></h5>
+                        <p class="card-text text-secondary ">  {{cartItem.product.price | currency:'INR':'Rs.'}}</p>
+                        <div class="input-group">
+                            <button class="btn btn-outline-light text-secondary"><i class="fa fa-minus"></i></button>
+                            <div class="btn">{{cartItem.count}}</div>
+                            <button class="btn btn-outline-light text-secondary"><i class="fa fa-plus"></i></button>
+                            <a class="btn text-danger" >Remove</a>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p class="card-text text-primary h4 float-end mx-2">{{cartItem.product.price | currency:'INR':'Rs.'}}</p>
+                    </div>
+                </div>
+                
             </div>
         </div>
-        <div class="col-md-4">
-        <img [src]="cartItem.product.imagePath" class="img-fluid rounded-start float-end p-2" width="40%">
-        </div>
+       
     </div>
     </div>
 </div>

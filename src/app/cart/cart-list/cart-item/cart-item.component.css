@@ -1,0 +1,9 @@
+.item{
+    text-decoration: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+.btn:focus {
+    outline: none;
+    box-shadow: none;
+}
