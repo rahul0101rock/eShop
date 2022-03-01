@@ -7,8 +7,8 @@
         <ul class="navbar-nav navbar-right ms-auto">
             <li class="nav-item mx-4 my-2 mx-lg=0 my-lg-0">
                 <div class="input-group">
-                    <input type="text" class="form-control px-4" placeholder="Search for products" size="80">
-                    <button class="btn btn-outline-light" type="button"> <i class="fa fa-search"></i> </button>
+                    <input type="text" class="form-control px-4" placeholder="Search for products" size="80" [(ngModel)]="searchText">
+                    <button class="btn btn-outline-light" type="button" (click)="onSearch()"> <i class="fa fa-search"></i> </button>
                   </div>                  
             </li>
         </ul>

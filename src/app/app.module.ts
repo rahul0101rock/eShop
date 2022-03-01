@@ -14,6 +14,7 @@ import { CartComponent } from './cart/cart.component';
 import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.component';
 import { CartAmountComponent } from './cart/cart-amount/cart-amount.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CartAmountComponent } from './cart/cart-amount/cart-amount.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [ProductService,CartService],
   bootstrap: [AppComponent]
