@@ -1,6 +1,6 @@
 import { Cart } from './cart.model';
 import { Injectable } from '@angular/core';
-import { Product } from '../products/product.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +8,8 @@ import { Product } from '../products/product.model';
 export class CartService {
 
   private cartItems: Cart[] = [];
+
+  public totalAmnt = 0;
 
   constructor() { }
 
@@ -25,5 +27,13 @@ export class CartService {
 
   removeCartItem(index: number){
     this.cartItems.splice(index,1);
+  }
+
+  totalAmount(){
+    let totalAmount =0
+    for(let item of this.cartItems){
+      totalAmount += item.product.price * item.count;
+    }
+    this.totalAmnt = totalAmount;
   }
 }
