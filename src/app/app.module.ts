@@ -15,6 +15,7 @@ import { CartListComponent } from './cart/cart-list/cart-list.component';
 import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.component';
 import { CartAmountComponent } from './cart/cart-amount/cart-amount.component';
 import { FormsModule } from '@angular/forms';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { FormsModule } from '@angular/forms';
     CartComponent,
     CartListComponent,
     CartItemComponent,
-    CartAmountComponent
+    CartAmountComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
