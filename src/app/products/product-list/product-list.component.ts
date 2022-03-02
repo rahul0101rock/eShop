@@ -12,6 +12,8 @@ export class ProductListComponent implements OnInit {
 
   products! : Product[];
 
+  searchText!: string;
+
   constructor(private productService: ProductService, private searchService: SearchService) { }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class ProductListComponent implements OnInit {
       (searchText: string) => {
         searchText = searchText.trim();
         if(searchText!=""){
+        this.searchText=searchText;
         this.products = [];
         for (let p of this.productService.getProducts()){
           let catcheck= false;
