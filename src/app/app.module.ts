@@ -16,6 +16,9 @@ import { CartItemComponent } from './cart/cart-list/cart-item/cart-item.componen
 import { CartAmountComponent } from './cart/cart-amount/cart-amount.component';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './home/home.component';
+import { OrderComponent } from './order/order.component';
+import { OrderSummaryComponent } from './order/order-summary/order-summary.component';
+import { OrderAddressComponent } from './order/order-address/order-address.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,10 @@ import { HomeComponent } from './home/home.component';
     CartListComponent,
     CartItemComponent,
     CartAmountComponent,
-    HomeComponent
+    HomeComponent,
+    OrderComponent,
+    OrderSummaryComponent,
+    OrderAddressComponent
   ],
   imports: [
     BrowserModule,

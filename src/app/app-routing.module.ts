@@ -1,3 +1,4 @@
+import { OrderComponent } from './order/order.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail.component';
@@ -13,6 +14,7 @@ const routes: Routes = [
     { path: ':id', component: ProductDetailComponent},
   ] },
   { path: 'cart', component: CartComponent},
+  { path: 'order', component: OrderComponent},
   { path: '**', redirectTo:""},
 ];
 
