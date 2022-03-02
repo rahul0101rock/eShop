@@ -7,18 +7,18 @@
                     <div *ngFor="let cartItem of cartItems">
                         <div class="card mb-3">
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-md-2">
                                     <img [src]="cartItem.product.imagePath" class="img-fluid rounded-start float-start p-4" width="100%">
                                 </div>
-                                <div class="col-10">
+                                <div class="col-md-10">
                                     <div class="card-body">
                                         <div class="row mt-2">
-                                            <div class="col">
+                                            <div class="col-md-10 col-8">
                                                 <h5 class="card-title">{{cartItem.product.name}}</h5>
                                                 <p class="card-text text-secondary ">  {{cartItem.product.price | currency:'INR':'Rs.'}}</p>
                                                 Quantity: {{cartItem.count}}
                                             </div>
-                                            <div class="col">
+                                            <div class="col-md-2 col-4">
                                                 <p class="card-text text-secondary h4 float-end mx-2">{{cartItem.product.price * cartItem.count | currency:'INR':'Rs.'}}</p>
                                             </div>
                                         </div>
@@ -28,9 +28,9 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row col-9 mx-auto">
+                    <div class="row mx-auto">
                         <hr>
-                        <div class="container">
+                        <div class="container mb-4">
                             <div class="float-start">Total Amount</div>
                             <div class="float-end">{{totalAmount | currency:'INR':'Rs.' }}</div>
                             <br>
