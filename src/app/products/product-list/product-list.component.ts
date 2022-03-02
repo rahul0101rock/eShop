@@ -18,10 +18,18 @@ export class ProductListComponent implements OnInit {
     this.products = this.productService.getProducts();
     this.searchService.search.subscribe(
       (searchText: string) => {
+        searchText = searchText.trim();
         if(searchText!=""){
         this.products = [];
         for (let p of this.productService.getProducts()){
-          if(p.name.toLowerCase().includes(searchText.toLowerCase())) this.products.push(p);
+          let catcheck= false;
+          for(let c of p.category){
+            if(c.toLowerCase().includes(searchText.toLowerCase())){
+              catcheck=true;
+              break;
+            }
+          }
+          if(p.name.toLowerCase().includes(searchText.toLowerCase()) || catcheck) this.products.push(p);
         }
       }else this.products = this.productService.getProducts();
       }
