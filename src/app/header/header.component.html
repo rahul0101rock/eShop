@@ -20,7 +20,15 @@
         <ul class="navbar-nav ms-auto mx-4">
             <li class="nav-item">
                 <a style="cursor: pointer;" class="nav-link float-start mx-4 mx-lg-0"><i class="fa fa-user-o"></i> Guest</a>
-                <a routerLink="/cart"  routerLinkActive="text-light" style="cursor: pointer;" class="nav-link float-end"><i class="fa fa-shopping-cart" style="font-size: x-large;"></i></a>
+                <a routerLink="/cart"  routerLinkActive="text-light" style="cursor: pointer;" class="nav-link float-end">
+                    
+                    <div class="position-relative">
+                        <i class="fa fa-shopping-cart" style="font-size: x-large;"></i>
+                        <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" *ngIf="cartItems.length > 0">
+                            {{cartItems.length}}
+                        </span>
+                    </div>
+                </a>
             </li>
         </ul>
     </div>
