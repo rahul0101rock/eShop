@@ -1,0 +1,15 @@
+.welcome{
+    background: url("https://firebasestorage.googleapis.com/v0/b/eshop-rahul.appspot.com/o/background.jpg?alt=media&token=1a7ef672-0ccf-4975-95eb-8ea81c4cee98") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+.weltext{
+    padding-top: 10%;
+    padding-left: 10%;
+    height: 93vh;
+}
+.bg{
+    background-color: black;
+}
