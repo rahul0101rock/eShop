@@ -1,3 +1,4 @@
+import { OrderGuard } from './order/order.guard';
 import { OrderComponent } from './order/order.component';
 import { HomeComponent } from './home/home.component';
 import { CartComponent } from './cart/cart.component';
@@ -14,7 +15,7 @@ const routes: Routes = [
     { path: ':id', component: ProductDetailComponent},
   ] },
   { path: 'cart', component: CartComponent},
-  { path: 'order', component: OrderComponent},
+  { path: 'order', component: OrderComponent, canActivate: [OrderGuard]},
   { path: '**', redirectTo:""},
 ];
 
