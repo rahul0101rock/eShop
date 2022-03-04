@@ -1,4 +1,4 @@
-import { SearchService } from './../../header/search.service';
+import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from './../product.model';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,27 +14,30 @@ export class ProductListComponent implements OnInit {
 
   searchText!: string;
 
-  constructor(private productService: ProductService, private searchService: SearchService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.products = this.productService.getProducts();
-    this.searchService.search.subscribe(
-      (searchText: string) => {
-        searchText = searchText.trim();
-        if (searchText != "") {
-          this.searchText = searchText;
+    this.route.queryParamMap.subscribe(
+      params =>{
+        this.searchText = <string> params.get('search');
+        if (this.searchText) {
           this.products = [];
-          for (let p of this.productService.getProducts()) {
+          for (let product of this.productService.getProducts()) {
             let catcheck = false;
-            for (let c of p.category) {
-              if (c.toLowerCase().includes(searchText.toLowerCase())) {
+            for (let categoryItem of product.category) {
+              if (categoryItem.toLowerCase().includes(this.searchText.toLowerCase())) {
                 catcheck = true;
                 break;
               }
             }
-            if (p.name.toLowerCase().includes(searchText.toLowerCase()) || catcheck) this.products.push(p);
+            if (product.name.toLowerCase().includes(this.searchText.toLowerCase()) || catcheck){
+              this.products.push(product);
+            }
           }
-        } else this.products = this.productService.getProducts();
+        } else{
+          this.products = this.productService.getProducts();
+        }
       }
     );
   }

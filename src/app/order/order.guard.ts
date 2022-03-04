@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class OrderGuard implements CanActivate {
 
-  constructor(private cartService: CartService, private router: Router, private route: ActivatedRoute) { }
+  constructor(private cartService: CartService, private router: Router) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
