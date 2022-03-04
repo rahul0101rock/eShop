@@ -1,13 +1,22 @@
 <div class="container-fluid">
-    <div class="row mt-4" *ngIf="products.length > 0; else noResult">
-        <div class="col-md-9 mx-auto">
-            <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i">
-            </app-product-item>
+    <div class="row mt-4" >
+        <div class="col-md-9 mx-auto" *ngIf="searchText; else search">
+            <div *ngIf="searchProducts.length > 0; else noResult">
+                <app-product-item *ngFor="let productObj of searchProducts" [product]="productObj.product" [index]="productObj.index">
+                </app-product-item>
+            </div>
+            <ng-template #noResult>
+                <div class="display-4 text-center mt-5">
+                    No Results for "{{searchText}}"
+                </div>
+            </ng-template>
         </div>
+        <ng-template #search>
+            <div class="col-md-9 mx-auto">
+                <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i">
+                </app-product-item>
+            </div>
+        </ng-template>
     </div>
-    <ng-template #noResult>
-        <div class="display-4 text-center mt-5">
-            No Results for "{{searchText}}"
-        </div>
-    </ng-template>
+    
 </div>

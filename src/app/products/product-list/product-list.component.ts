@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductListComponent implements OnInit {
 
   products!: Product[];
-
+  searchProducts!: {product: Product, index: number}[];
   searchText!: string;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
@@ -22,7 +22,7 @@ export class ProductListComponent implements OnInit {
       params =>{
         this.searchText = <string> params.get('search');
         if (this.searchText) {
-          this.products = [];
+          this.searchProducts = [];
           for (let product of this.productService.getProducts()) {
             let catcheck = false;
             for (let categoryItem of product.category) {
@@ -32,10 +32,10 @@ export class ProductListComponent implements OnInit {
               }
             }
             if (product.name.toLowerCase().includes(this.searchText.toLowerCase()) || catcheck){
-              this.products.push(product);
+              this.searchProducts.push({product: product,index: this.products.indexOf(product)});
             }
           }
-        } else{
+        }else{
           this.products = this.productService.getProducts();
         }
       }

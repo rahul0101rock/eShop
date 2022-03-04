@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
   onSearch() {
     if(this.searchText.trim().length>0){
       this.router.navigate(['/products'], {queryParams: {search : this.searchText.trim() }});
+      this.searchText="";
     }
   }
 
