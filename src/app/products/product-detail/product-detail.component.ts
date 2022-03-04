@@ -25,7 +25,9 @@ export class ProductDetailComponent implements OnInit {
       }
     );
     for (let cartItem of this.cartService.getCartItems()) {
-      if (cartItem.product == this.product) this.addedToCart = true;
+      if (cartItem.product == this.product){
+        this.addedToCart = true;
+      }
     }
   }
 

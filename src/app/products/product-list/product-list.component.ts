@@ -23,7 +23,7 @@ export class ProductListComponent implements OnInit {
         this.searchText = <string> params.get('search');
         if (this.searchText) {
           this.searchProducts = [];
-          for (let product of this.productService.getProducts()) {
+          this.productService.getProducts().forEach( (product,index) => {
             let catcheck = false;
             for (let categoryItem of product.category) {
               if (categoryItem.toLowerCase().includes(this.searchText.toLowerCase())) {
@@ -32,9 +32,9 @@ export class ProductListComponent implements OnInit {
               }
             }
             if (product.name.toLowerCase().includes(this.searchText.toLowerCase()) || catcheck){
-              this.searchProducts.push({product: product,index: this.products.indexOf(product)});
+              this.searchProducts.push({product: product,index: index});
             }
-          }
+          })
         }else{
           this.products = this.productService.getProducts();
         }
