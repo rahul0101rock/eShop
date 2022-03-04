@@ -8,14 +8,14 @@ import { Observable } from 'rxjs';
 })
 export class OrderGuard implements CanActivate {
 
-  constructor(private cartService: CartService,private router: Router,private route: ActivatedRoute){}
+  constructor(private cartService: CartService, private router: Router, private route: ActivatedRoute) { }
 
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    if(this.cartService.getCartItems().length > 0) return true;
+    if (this.cartService.getCartItems().length > 0) return true;
     else this.router.navigate(["/cart"]);
     return false;
   }
-  
+
 }

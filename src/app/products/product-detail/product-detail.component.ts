@@ -14,8 +14,8 @@ export class ProductDetailComponent implements OnInit {
 
   product!: Product;
   id!: number;
-  addedToCart= false;
-  constructor(private productService: ProductService,private route: ActivatedRoute, private cartService: CartService) { }
+  addedToCart = false;
+  constructor(private productService: ProductService, private route: ActivatedRoute, private cartService: CartService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
@@ -24,13 +24,13 @@ export class ProductDetailComponent implements OnInit {
         this.product = this.productService.getProduct(this.id);
       }
     );
-    for(let cartItem of this.cartService.getCartItems()){
-      if(cartItem.product == this.product) this.addedToCart = true;
+    for (let cartItem of this.cartService.getCartItems()) {
+      if (cartItem.product == this.product) this.addedToCart = true;
     }
   }
 
-  onAddToCart(){
-    this.productService.producttoCart(this.product,this.id);
-    this.addedToCart =true;
+  onAddToCart() {
+    this.productService.producttoCart(this.product, this.id);
+    this.addedToCart = true;
   }
 }

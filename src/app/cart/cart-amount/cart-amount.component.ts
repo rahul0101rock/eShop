@@ -8,9 +8,9 @@ import { Subscription } from 'rxjs';
   templateUrl: './cart-amount.component.html',
   styleUrls: ['./cart-amount.component.css']
 })
-export class CartAmountComponent implements OnInit,DoCheck {
+export class CartAmountComponent implements OnInit, DoCheck {
 
-  totalAmount : number=0;
+  totalAmount: number = 0;
 
   constructor(private cartService: CartService) { }
 

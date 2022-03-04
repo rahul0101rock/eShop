@@ -9,14 +9,16 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent},
-  { path: 'products', component: ProductsComponent, children:[
-    { path: '', component: ProductListComponent},
-    { path: ':id', component: ProductDetailComponent},
-  ] },
-  { path: 'cart', component: CartComponent},
-  { path: 'order', component: OrderComponent, canActivate: [OrderGuard]},
-  { path: '**', redirectTo:""},
+  { path: '', component: HomeComponent },
+  {
+    path: 'products', component: ProductsComponent, children: [
+      { path: '', component: ProductListComponent },
+      { path: ':id', component: ProductDetailComponent },
+    ]
+  },
+  { path: 'cart', component: CartComponent },
+  { path: 'order', component: OrderComponent, canActivate: [OrderGuard] },
+  { path: '**', redirectTo: "" },
 ];
 
 @NgModule({

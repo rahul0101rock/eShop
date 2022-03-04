@@ -9,25 +9,25 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CartItemComponent implements OnInit {
 
-  @Input() cartItem! : Cart;
-  @Input() index! : number; 
+  @Input() cartItem!: Cart;
+  @Input() index!: number;
 
   constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
 
-  onIncreaseCount(){
+  onIncreaseCount() {
     const c = this.cartItem.count + 1;
-    this.cartService.changeCount(this.index,c);
+    this.cartService.changeCount(this.index, c);
   }
 
-  onDecreaseCount(){
+  onDecreaseCount() {
     const c = this.cartItem.count - 1;
-    this.cartService.changeCount(this.index,c);
+    this.cartService.changeCount(this.index, c);
   }
 
-  onRemoveItem(){
+  onRemoveItem() {
     this.cartService.removeCartItem(this.index);
   }
 }

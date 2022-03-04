@@ -9,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
 
-  cartItems! : Cart[];
+  cartItems!: Cart[];
 
   constructor(private cartService: CartService) { }
 

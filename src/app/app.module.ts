@@ -42,7 +42,7 @@ import { OrderAddressComponent } from './order/order-address/order-address.compo
     AppRoutingModule,
     FormsModule
   ],
-  providers: [ProductService,CartService],
+  providers: [ProductService, CartService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

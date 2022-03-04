@@ -1,7 +1,8 @@
 <div class="container-fluid">
     <div class="row mt-4" *ngIf="products.length > 0; else noResult">
         <div class="col-md-9 mx-auto">
-            <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i" ></app-product-item>
+            <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i">
+            </app-product-item>
         </div>
     </div>
     <ng-template #noResult>

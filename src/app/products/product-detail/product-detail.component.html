@@ -1,17 +1,19 @@
 <div class="card container">
-    
+
     <div class="row g-0">
         <div class="col-md-6">
-            <img [src]="product.imagePath" class="img-fluid p-5 pimg" >
+            <img [src]="product.imagePath" class="img-fluid p-5 pimg">
         </div>
         <div class="col-md-6">
             <div class="card-body">
                 <h5 class="card-title display-4">{{product.name}}</h5>
                 <p class="card-text">{{product.description}}</p>
                 <p class="card-text text-primary h4">{{product.price | currency:'INR':'Rs.'}}</p>
-                <p class="card-text"><small class="text-muted"><span class="badge rounded-pill bg-secondary me-2" *ngFor="let cat of product.category">{{cat}}</span></small></p>
+                <p class="card-text"><small class="text-muted"><span class="badge rounded-pill bg-secondary me-2"
+                            *ngFor="let cat of product.category">{{cat}}</span></small></p>
                 <div *ngIf="!addedToCart; else added">
-                    <button type="button" (click)="onAddToCart()" class="btn btn-outline-warning"><i class="fa fa-cart-plus"></i> Add to cart</button>
+                    <button type="button" (click)="onAddToCart()" class="btn btn-outline-warning"><i
+                            class="fa fa-cart-plus"></i> Add to cart</button>
                 </div>
                 <ng-template #added>
                     <i class="text-success"> Added to Cart </i>
@@ -19,4 +21,4 @@
             </div>
         </div>
     </div>
-</div>  
+</div>

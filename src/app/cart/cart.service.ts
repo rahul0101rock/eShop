@@ -12,25 +12,25 @@ export class CartService {
 
   constructor() { }
 
-  getCartItems(){
+  getCartItems() {
     return this.cartItems;
   }
 
-  addTOCart(cart: Cart){
+  addTOCart(cart: Cart) {
     this.cartItems.push(cart);
   }
 
-  changeCount(index: number, newcount: number){
+  changeCount(index: number, newcount: number) {
     this.cartItems[index].count = newcount;
   }
 
-  removeCartItem(index: number){
-    this.cartItems.splice(index,1);
+  removeCartItem(index: number) {
+    this.cartItems.splice(index, 1);
   }
 
-  totalAmount(){
-    let totalAmount =0
-    for(let item of this.cartItems){
+  totalAmount() {
+    let totalAmount = 0
+    for (let item of this.cartItems) {
       totalAmount += item.product.price * item.count;
     }
     this.totalAmnt = totalAmount;

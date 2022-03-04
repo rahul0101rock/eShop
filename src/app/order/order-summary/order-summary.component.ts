@@ -9,10 +9,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderSummaryComponent implements OnInit {
 
-  cartItems! : Cart[];
-  totalAmount!: number; 
+  cartItems!: Cart[];
+  totalAmount!: number;
 
-  constructor(private cartService : CartService) { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();

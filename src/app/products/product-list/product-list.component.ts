@@ -10,7 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProductListComponent implements OnInit {
 
-  products! : Product[];
+  products!: Product[];
 
   searchText!: string;
 
@@ -21,20 +21,20 @@ export class ProductListComponent implements OnInit {
     this.searchService.search.subscribe(
       (searchText: string) => {
         searchText = searchText.trim();
-        if(searchText!=""){
-        this.searchText=searchText;
-        this.products = [];
-        for (let p of this.productService.getProducts()){
-          let catcheck= false;
-          for(let c of p.category){
-            if(c.toLowerCase().includes(searchText.toLowerCase())){
-              catcheck=true;
-              break;
+        if (searchText != "") {
+          this.searchText = searchText;
+          this.products = [];
+          for (let p of this.productService.getProducts()) {
+            let catcheck = false;
+            for (let c of p.category) {
+              if (c.toLowerCase().includes(searchText.toLowerCase())) {
+                catcheck = true;
+                break;
+              }
             }
+            if (p.name.toLowerCase().includes(searchText.toLowerCase()) || catcheck) this.products.push(p);
           }
-          if(p.name.toLowerCase().includes(searchText.toLowerCase()) || catcheck) this.products.push(p);
-        }
-      }else this.products = this.productService.getProducts();
+        } else this.products = this.productService.getProducts();
       }
     );
   }
