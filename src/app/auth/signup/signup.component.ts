@@ -12,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   signUpForm!: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
+  constructor(public formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -33,7 +33,7 @@ export class SignupComponent implements OnInit {
     let firstName: string = this.signUpForm.value.firstName;
     let lastName: string = this.signUpForm.value.lastName;
 
-    this.auth.signup(email,password,firstName,lastName).then(
+    this.authService.signup(email,password,firstName,lastName).then(
       response => {
         this.router.navigate(['/products']);
       }

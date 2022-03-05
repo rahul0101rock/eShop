@@ -30,7 +30,6 @@ export class HeaderComponent implements OnInit {
     auth.onAuthStateChanged(auth.getAuth(),
       user => {
         this.user = user;
-        console.log(this.user?.displayName);
         if (user) {
           this.loggedIn = true;
         } else {
