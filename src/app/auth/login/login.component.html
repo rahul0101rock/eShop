@@ -1,7 +1,7 @@
-<div class="card border-secondary mb-3 mx-auto my-5 col-sm-6 col-10" >
+<div class="card border-secondary mb-3 mx-auto my-5 col-sm-6 col-10">
     <div class="card-body">
         <h1 class="text-center text-secondary my-5">
-           Login
+            Login
         </h1>
         <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
             <div class="row">
@@ -9,22 +9,28 @@
                     <div class="row">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-light"><i class="fa fa-envelope py-1"></i></span>
+                                <span class="input-group-text bg-light"><i class="fa fa-envelope py-1"></i></span>
                             </div>
                             <input type="email" class="form-control" placeholder="Email" ngModel name="email">
-                          </div>
+                        </div>
                     </div>
                     <div class="row my-2">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                              <span class="input-group-text bg-light"><i class="fa fa-lock py-1 px-1"></i></span>
+                                <span class="input-group-text bg-light"><i class="fa fa-lock py-1 px-1"></i></span>
                             </div>
-                            <input type="text" class="form-control" placeholder="Password" minlength="8" ngModel name="password">
-                          </div>
+                            <input type="password" class="form-control" placeholder="Password" minlength="8" ngModel
+                                name="password">
+                        </div>
                     </div>
                 </div>
-                <button class="btn btn-outline-secondary text-center col-sm-4 col-8 mx-auto my-2 mb-5">Login <i class="fa fa-sign-in"></i></button>
+                <button class="btn btn-outline-secondary col-sm-4 col-8 mx-auto my-2 mb-4">Login <i
+                        class="fa fa-sign-in"></i></button>
             </div>
         </form>
+        <div class="text-center mb-5">
+            <a routerLink="/auth/signup" routerLinkActive="text-light" style="cursor: pointer;"
+                class="text-center col-sm-4 col-8 mx-auto my-2 mb-5">Create New Account</a>
+        </div>
     </div>
 </div>

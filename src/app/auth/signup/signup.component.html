@@ -1,1 +1,39 @@
-<p>signup works!</p>
+<div class="card border-success mb-3 mx-auto my-5 col-sm-6 col-10">
+    <div class="card-body">
+        <h1 class="text-center text-success my-5">
+            SignUp
+        </h1>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" class="col-md-8 mx-auto">
+            <div class="form-row row">
+                <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" >
+                </div>
+                <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
+                </div>
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="email" placeholder="Enter your email" class="form-control" formControlName="email">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" formControlName="password">
+            </div>
+            <br>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+            </div>
+            <br>
+            <div class="text-center">
+                <button type="submit" class="btn btn-outline-success col-12" [disabled]="!signUpForm.valid">
+                    Create your Account
+                </button>
+            </div>
+        </form>
+        <div class="text-center my-4">
+            <a routerLink="/auth/login" routerLinkActive="text-light" style="cursor: pointer;"
+                class="text-center col-sm-4 col-8 mx-auto my-2 mb-5">Already have an account? Login</a>
+        </div>
+    </div>
+</div>

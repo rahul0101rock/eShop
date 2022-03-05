@@ -1,8 +1,9 @@
 <div class="container-fluid">
-    <div class="row mt-4" >
+    <div class="row mt-4">
         <div class="col-md-9 mx-auto" *ngIf="searchText; else search">
             <div *ngIf="searchProducts.length > 0; else noResult">
-                <app-product-item *ngFor="let productObj of searchProducts" [product]="productObj.product" [index]="productObj.index">
+                <app-product-item *ngFor="let productObj of searchProducts" [product]="productObj.product"
+                    [index]="productObj.index">
                 </app-product-item>
             </div>
             <ng-template #noResult>
@@ -18,5 +19,5 @@
             </div>
         </ng-template>
     </div>
-    
+
 </div>

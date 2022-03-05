@@ -11,7 +11,7 @@ import { Component, OnInit } from '@angular/core';
 export class ProductListComponent implements OnInit {
 
   products!: Product[];
-  searchProducts!: {product: Product, index: number}[];
+  searchProducts!: { product: Product, index: number }[];
   searchText!: string;
 
   constructor(private productService: ProductService, private route: ActivatedRoute) { }
@@ -19,11 +19,11 @@ export class ProductListComponent implements OnInit {
   ngOnInit(): void {
     this.products = this.productService.getProducts();
     this.route.queryParamMap.subscribe(
-      params =>{
-        this.searchText = <string> params.get('search');
+      params => {
+        this.searchText = <string>params.get('search');
         if (this.searchText) {
           this.searchProducts = [];
-          this.productService.getProducts().forEach( (product,index) => {
+          this.productService.getProducts().forEach((product, index) => {
             let catcheck = false;
             for (let categoryItem of product.category) {
               if (categoryItem.toLowerCase().includes(this.searchText.toLowerCase())) {
@@ -31,11 +31,11 @@ export class ProductListComponent implements OnInit {
                 break;
               }
             }
-            if (product.name.toLowerCase().includes(this.searchText.toLowerCase()) || catcheck){
-              this.searchProducts.push({product: product,index: index});
+            if (product.name.toLowerCase().includes(this.searchText.toLowerCase()) || catcheck) {
+              this.searchProducts.push({ product: product, index: index });
             }
           })
-        }else{
+        } else {
           this.products = this.productService.getProducts();
         }
       }
