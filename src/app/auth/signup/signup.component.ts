@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { AuthService } from './../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
@@ -11,7 +11,7 @@ export class SignupComponent implements OnInit {
 
   signUpForm!: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, public router: Router) { }
+  constructor(public formBuilder: FormBuilder, private auth: AuthService) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -27,7 +27,16 @@ export class SignupComponent implements OnInit {
   }
 
   onSignUp() {
-    console.log(this.signUpForm.value)
+    let email: string = this.signUpForm.value.email;
+    let password: string = this.signUpForm.value.password;
+    let firstName: string = this.signUpForm.value.firstName;
+    let lastName: string = this.signUpForm.value.lastName;
+
+    this.auth.signup(email,password,firstName,lastName).then(
+      response => {
+        console.log(response);
+      }
+    );
   }
 
   matchpass(passwordKey: string, confirmPasswordKey: string) {
