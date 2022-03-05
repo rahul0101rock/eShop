@@ -11,10 +11,10 @@ export class SignupComponent implements OnInit {
 
   signUpForm!: FormGroup;
 
-  constructor(public fb: FormBuilder, public router: Router) { }
+  constructor(public formBuilder: FormBuilder, public router: Router) { }
 
   ngOnInit(): void {
-    this.signUpForm = this.fb.group({
+    this.signUpForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', [Validators.required]],

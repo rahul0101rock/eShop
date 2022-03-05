@@ -1,3 +1,4 @@
+import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
@@ -8,12 +9,17 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
   }
 
   onLogin(form: NgForm) {
-    console.log(form.value);
+    this.auth.login(form.value['email'],form.value['password']).then(
+      response => {
+        console.log(response);
+      }
+    );
+
   }
 }

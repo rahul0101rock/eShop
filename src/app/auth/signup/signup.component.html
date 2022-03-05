@@ -6,7 +6,7 @@
         <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()" class="col-md-8 mx-auto">
             <div class="form-row row">
                 <div class="form-group col-sm-6">
-                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" >
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName">
                 </div>
                 <div class="form-group col-sm-6">
                     <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName">
@@ -22,7 +22,8 @@
             </div>
             <br>
             <div class="form-group">
-                <input type="password" class="form-control" placeholder="Confirm Password" formControlName="confirmPassword">
+                <input type="password" class="form-control" placeholder="Confirm Password"
+                    formControlName="confirmPassword">
             </div>
             <br>
             <div class="text-center">
