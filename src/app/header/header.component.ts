@@ -2,6 +2,7 @@ import { CartService } from './../cart/cart.service';
 import { Cart } from './../cart/cart.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as auth from 'firebase/auth';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,32 @@ export class HeaderComponent implements OnInit {
 
   searchText = "";
   cartItems!: Cart[];
+  loggedIn: boolean = false;
+  user: auth.User | null = null;
 
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
     this.cartItems = this.cartService.getCartItems();
+
+    if (this.user) {
+      this.loggedIn = true;
+    } else {
+      this.loggedIn = false;
+    }
+
+    auth.onAuthStateChanged(auth.getAuth(),
+      user => {
+        this.user = user;
+        console.log(this.user?.displayName);
+        if (user) {
+          this.loggedIn = true;
+        } else {
+          this.loggedIn = false;
+        }
+      }
+    );
+    
   }
 
   onSearch() {
@@ -26,4 +48,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
+  onLogout(){
+    auth.signOut(auth.getAuth());
+  }
 }

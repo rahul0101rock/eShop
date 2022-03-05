@@ -22,11 +22,24 @@
             </li>
         </ul>
         <ul class="navbar-nav ms-auto mx-4">
-            <li class="nav-item">
-                <a style="cursor: pointer;" class="nav-link float-start mx-4 mx-lg-0" routerLink="/auth/login" routerLinkActive="text-light">
+            <li class="nav-item mx-auto">
+                <a style="cursor: pointer;" class="nav-link float-start mx-4 mx-lg-0" routerLink="/auth/login" routerLinkActive="text-light" *ngIf="!loggedIn; else logged">
                     Login <i class="fa fa-sign-in"></i>
                 </a>
-                <a routerLink="/cart" routerLinkActive="text-light" style="cursor: pointer;" class="nav-link float-end">
+                <ng-template #logged>
+                    <ul class="navbar-nav" >
+                        <li class="dropdown nav-item">
+                            <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown"><i class="fa fa-user-o"></i> {{user?.displayName}}</a>
+                            <ul class="dropdown-menu bg-dark">
+                                <li><a style="cursor: pointer;" class="nav-link text-light text-center" >My Profile</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link text-light text-center" (click)="onLogout()">Logout <i class="fa fa-sign-out"></i></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </ng-template>
+            </li>
+            <li class="nav-item mx-auto">
+                <a routerLink="/cart" routerLinkActive="text-light" style="cursor: pointer;" class="nav-link ">
 
                     <div class="position-relative">
                         <i class="fa fa-shopping-cart" style="font-size: x-large;"></i>

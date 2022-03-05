@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
@@ -11,7 +12,7 @@ export class SignupComponent implements OnInit {
 
   signUpForm!: FormGroup;
 
-  constructor(public formBuilder: FormBuilder, private auth: AuthService) { }
+  constructor(public formBuilder: FormBuilder, private auth: AuthService, private router: Router) { }
 
   ngOnInit(): void {
     this.signUpForm = this.formBuilder.group({
@@ -34,7 +35,7 @@ export class SignupComponent implements OnInit {
 
     this.auth.signup(email,password,firstName,lastName).then(
       response => {
-        console.log(response);
+        this.router.navigate(['/products']);
       }
     );
   }
