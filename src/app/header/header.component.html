@@ -31,7 +31,7 @@
                         <li class="dropdown nav-item">
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown"><i class="fa fa-user-o"></i> {{user?.displayName}}</a>
                             <ul class="dropdown-menu bg-dark">
-                                <li><a style="cursor: pointer;" class="nav-link text-light text-center" >My Profile</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link text-light text-center" >My Orders</a></li>
                                 <li><a style="cursor: pointer;" class="nav-link text-light text-center" (click)="onLogout()">Logout <i class="fa fa-sign-out"></i></a></li>
                             </ul>
                         </li>
@@ -40,7 +40,6 @@
             </li>
             <li class="nav-item mx-auto">
                 <a routerLink="/cart" routerLinkActive="text-light" style="cursor: pointer;" class="nav-link ">
-
                     <div class="position-relative">
                         <i class="fa fa-shopping-cart" style="font-size: x-large;"></i>
                         <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
