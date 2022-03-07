@@ -1,3 +1,4 @@
+import { LoadingComponent } from './../loading/loading.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -10,7 +11,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 @NgModule({
   declarations: [
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule,

@@ -1,4 +1,7 @@
-<div class="card border-secondary mb-3 mx-auto my-5 col-sm-6 col-10">
+<div *ngIf="isLoading">
+    <app-loading></app-loading>
+</div>
+<div class="card border-secondary mb-3 mx-auto my-5 col-sm-6 col-10" *ngIf="!isLoading">
     <div class="card-body">
         <h1 class="text-center text-secondary my-5">
             Login
@@ -34,3 +37,4 @@
         </div>
     </div>
 </div>
+<div class="alert alert-danger card mx-auto col-sm-6 col-10 " *ngIf="error && !isLoading">{{error}}</div>

@@ -11,6 +11,8 @@ import { Component, OnInit } from '@angular/core';
 export class SignupComponent implements OnInit {
 
   signUpForm!: FormGroup;
+  isLoading = false;
+  error = null;
 
   constructor(public formBuilder: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -33,9 +35,15 @@ export class SignupComponent implements OnInit {
     let firstName: string = this.signUpForm.value.firstName;
     let lastName: string = this.signUpForm.value.lastName;
 
-    this.authService.signup(email,password,firstName,lastName).then(
+    this.isLoading = true;
+
+    this.authService.signup(email, password, firstName, lastName).then(
       response => {
+        this.isLoading = false;
         this.router.navigate(['/products']);
+      }, error => {
+        this.isLoading = false;
+        this.error = error.message;
       }
     );
   }

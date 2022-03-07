@@ -10,15 +10,23 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService: AuthService,private router: Router) { }
+  isLoading = false;
+  error = null;
+
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
 
   onLogin(form: NgForm) {
-    this.authService.login(form.value['email'],form.value['password']).then(
+    this.isLoading = true;
+    this.authService.login(form.value['email'], form.value['password']).then(
       response => {
-        this.router.navigate(['/products'])
+        this.isLoading = false;
+        this.router.navigate(['/products']);
+      }, error => {
+        this.isLoading = false;
+        this.error = error;
       }
     );
 
