@@ -50,6 +50,5 @@ export class HeaderComponent implements OnInit {
 
   onLogout() {
     auth.signOut(auth.getAuth());
-    this.cartService.clearCart();
   }
 }
