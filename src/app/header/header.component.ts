@@ -19,8 +19,9 @@ export class HeaderComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) { }
 
   ngOnInit(): void {
+    this.cartService.setCartItems();
     this.cartItems = this.cartService.getCartItems();
-
+    console.log(this.cartItems);
     if (this.user) {
       this.loggedIn = true;
     } else {
@@ -37,7 +38,7 @@ export class HeaderComponent implements OnInit {
         }
       }
     );
-    
+
   }
 
   onSearch() {
@@ -47,7 +48,7 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  onLogout(){
+  onLogout() {
     auth.signOut(auth.getAuth());
   }
 }

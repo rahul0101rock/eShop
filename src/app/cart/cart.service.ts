@@ -24,7 +24,10 @@ export class CartService {
           this.http.get<Cart[]>("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json").subscribe(
             cartItems => {
               if(cartItems){
-                this.cartItems = cartItems;
+                this.cartItems.splice(0,this.cartItems.length);
+                for(let cartItem of cartItems){
+                  this.cartItems.push(new Cart(cartItem.product,cartItem.count,cartItem.productIndex));
+                }
               }
             }
           );
