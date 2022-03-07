@@ -19,4 +19,7 @@ export class OrderSummaryComponent implements OnInit {
     this.totalAmount = this.cartService.totalAmnt;
   }
 
+  onOrderPlaced(){
+    alert("Your order has been placed");
+  }
 }
