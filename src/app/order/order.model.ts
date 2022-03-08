@@ -6,11 +6,11 @@ export class Order {
     public orderAmount: number;
     public orderStatus: string;
 
-    constructor(orderItems: Cart[], address: string, orderAmount: number) {
+    constructor(orderItems: Cart[], dateTime: Date, address: string, orderAmount: number, orderStatus: string) {
         this.orderItems = orderItems;
-        this.dateTime = new Date();
+        this.dateTime = dateTime;
         this.address = address;
         this.orderAmount = orderAmount;
-        this.orderStatus = "Ordered";
+        this.orderStatus = orderStatus;
     }
 }

@@ -24,7 +24,7 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   onOrderPlaced() {
-    this.orderService.addToOrder(new Order(this.cartItems, this.addressService.getAddress(), this.totalAmount));
+    this.orderService.addToOrder(new Order(this.cartItems.splice(0),new Date(), this.addressService.getAddress(), this.totalAmount,"Ordered"));
     this.cartService.clearCart();
     this.cartService.updateCart();
     alert("Your order has been placed");
