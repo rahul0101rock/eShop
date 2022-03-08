@@ -1,11 +1,11 @@
 <div class="container">
-    <a style="cursor: pointer;" class="order">
+    <a style="cursor: pointer;" [routerLink]="[index]" class="order">
         <div class="card mb-3" style="max-width: 100%;">
             <div class="row g-0">
                 <div class="col-md-10 col-8">
                     <div class="card-body">
                         <h5 class="card-title">{{order.dateTime | date: 'medium'}}</h5>
-                        <p class="card-text">{{order.orderStatus}}</p>
+                        <p class="card-text"> Order Status: <small class="text-primary">{{order.orderStatus}}</small></p>
                     </div>
                 </div>
                 <div class="col-md-2 col-4">

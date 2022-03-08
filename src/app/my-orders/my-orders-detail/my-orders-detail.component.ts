@@ -1,3 +1,6 @@
+import { ActivatedRoute, Params } from '@angular/router';
+import { OrderService } from './../../order/order.service';
+import { Order } from './../../order/order.model';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MyOrdersDetailComponent implements OnInit {
 
-  constructor() { }
+  order!: Order;
+  id!: number;
+
+  constructor(private orderService: OrderService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+        this.order = this.orderService.getOrder(this.id);
+      }
+    );
   }
 
 }
