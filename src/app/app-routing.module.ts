@@ -7,6 +7,7 @@ const routes: Routes = [
   { path: 'cart', loadChildren: () => import('./cart/cart.module').then(m => m.CartModule) },
   { path: 'order', loadChildren: () => import('./order/order.module').then(m => m.OrderModule) },
   { path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule) },
+  { path: 'myorders', loadChildren: () => import('./my-orders/my-orders.module').then(m => m.MyOrdersModule) },
   { path: '**', redirectTo: "" },
 ];
 

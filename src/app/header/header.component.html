@@ -31,7 +31,7 @@
                         <li class="dropdown nav-item">
                             <a class="dropdown-toggle nav-link" href="#" data-bs-toggle="dropdown"><i class="fa fa-user-o"></i> {{user?.displayName}}</a>
                             <ul class="dropdown-menu bg-dark">
-                                <li><a style="cursor: pointer;" class="nav-link text-light text-center" >My Orders</a></li>
+                                <li><a style="cursor: pointer;" class="nav-link text-secondary text-center" routerLink="/myorders" routerLinkActive="text-light">My Orders</a></li>
                                 <li><a style="cursor: pointer;" class="nav-link text-light text-center" (click)="onLogout()">Logout <i class="fa fa-sign-out"></i></a></li>
                             </ul>
                         </li>

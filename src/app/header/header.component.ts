@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.cartService.setCartItems();
     this.cartItems = this.cartService.getCartItems();
-    console.log(this.cartItems);
     if (this.user) {
       this.loggedIn = true;
     } else {
