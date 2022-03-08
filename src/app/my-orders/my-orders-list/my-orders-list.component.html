@@ -1,1 +1,13 @@
-<p>my-orders-list works!</p>
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-9 mx-auto" *ngIf="orders.length>0; else Empty">
+        <app-my-orders-item *ngFor="let order of orders; let i = index" [order]="order" [index]="i">
+        </app-my-orders-item>
+        </div>
+        <ng-template #Empty>
+            <div class="col-12 display-4 text-center mt-5">
+                No Orders
+            </div>
+        </ng-template>
+    </div>
+</div>

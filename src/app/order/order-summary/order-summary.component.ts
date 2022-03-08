@@ -23,6 +23,6 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   onOrderPlaced() {
-    this.orderService.addToOrder(new Order(this.cartItems,this.addressService.getAddress()));
+    this.orderService.addToOrder(new Order(this.cartItems,this.addressService.getAddress(),this.totalAmount));
   }
 }
