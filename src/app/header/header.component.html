@@ -15,7 +15,7 @@
             <li class="nav-item mx-4 my-2 mx-lg-0 my-lg-0">
                 <div class="input-group">
                     <input type="text" class="form-control px-4" placeholder="Search for products" size="80"
-                        [(ngModel)]="searchText" (keyup.enter)="onSearch()">
+                        [(ngModel)]="searchText" (keyup.enter)="onSearch()" (keyup)="onKeyPressed()">
                     <button class="btn btn-outline-light" type="submit" (click)="onSearch()"> <i
                             class="fa fa-search"></i> </button>
                 </div>
