@@ -10,10 +10,14 @@ export class OrderService {
 
   constructor() { }
 
-  getOrders(){
+  getOrders() {
     return this.orders;
   }
-  getOrder(index: number){
+  getOrder(index: number) {
     return this.orders[index];
+  }
+
+  addToOrder(order: Order) {
+    this.orders.push(order);
   }
 }

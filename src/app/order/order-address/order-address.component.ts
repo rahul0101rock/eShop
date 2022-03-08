@@ -1,3 +1,4 @@
+import { AddressService } from './address.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderAddressComponent implements OnInit {
 
-  constructor() { }
+  address!: string;
+
+  constructor(private addressService: AddressService) { }
 
   ngOnInit(): void {
+    this.addressService.setAddress("Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016");
+    this.address = this.addressService.getAddress();
   }
 
 }
