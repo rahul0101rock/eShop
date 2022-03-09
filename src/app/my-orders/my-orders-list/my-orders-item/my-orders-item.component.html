@@ -9,7 +9,7 @@
                     </div>
                 </div>
                 <div class="col-md-2 col-4">
-                    <p class="card-text text-primary h5 float-end p-4">{{order.orderAmount | currency:'INR':'Rs.'}}</p>
+                    <p class="card-text text-primary h5 float-end p-4">{{order.orderAmount+100-order.orderAmount*0.05 | currency:'INR':'Rs.'}}</p>
                 </div>
             </div>
         </div>

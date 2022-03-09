@@ -1,12 +1,22 @@
 <div class="card mt-3 mx-auto" style="max-width: 80%;">
     <div class="row g-0">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card-body">
                 <h5 class="card-title">Shipping Details</h5>
-                <div class="card-text">
-                    <address>
+                <div class="card-text row">
+                    <address *ngIf="!inEditMode" class="col">
                         {{address}}
                     </address>
+                    <textarea rows="5" [value]="address" class="form-control col" *ngIf="inEditMode" #addressField></textarea>
+                    <button type="button" (click)="onSwitch()" class="btn btn-outline-secondary float-end col-auto mx-2" *ngIf="!inEditMode"><i class="fa fa-edit"></i></button>
+                    <div class="col-auto my-auto" *ngIf="inEditMode">
+                        <div class="row p-4">
+                            <button type="button" (click)="onSave()" class="btn btn-outline-success float-end"><i class="fa fa-save"></i></button>
+                        </div>
+                        <div class="row p-4">
+                            <button type="button" (click)="onSwitch()" class="btn btn-outline-danger float-end"><i class="fa fa-close"></i></button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

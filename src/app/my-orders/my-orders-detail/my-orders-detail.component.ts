@@ -25,7 +25,6 @@ export class MyOrdersDetailComponent implements OnInit {
           this.order = this.orderService.getOrder(this.id);
           this.isLoading = false;
         }, 300);
-
       }
     );
   }

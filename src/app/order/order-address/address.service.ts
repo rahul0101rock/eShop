@@ -5,7 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class AddressService {
 
-  address: string = "";
+  address: string = "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016";
 
   constructor() { }
 

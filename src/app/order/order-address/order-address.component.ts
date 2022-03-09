@@ -1,5 +1,5 @@
 import { AddressService } from './address.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-order-address',
@@ -9,12 +9,23 @@ import { Component, OnInit } from '@angular/core';
 export class OrderAddressComponent implements OnInit {
 
   address!: string;
+  inEditMode = false;
+  @ViewChild('addressField', { static: false }) addressField!: ElementRef;
 
   constructor(private addressService: AddressService) { }
 
   ngOnInit(): void {
-    this.addressService.setAddress("Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016");
     this.address = this.addressService.getAddress();
+  }
+
+  onSwitch(): void {
+    this.inEditMode = !this.inEditMode;
+  }
+
+  onSave(){
+    this.address = this.addressField.nativeElement.value;
+    this.addressService.setAddress(this.address);
+    this.inEditMode = !this.inEditMode;
   }
 
 }
