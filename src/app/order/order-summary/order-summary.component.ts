@@ -15,6 +15,7 @@ export class OrderSummaryComponent implements OnInit {
 
   cartItems!: Cart[];
   totalAmount!: number;
+  message!: string | null;
 
   constructor(private cartService: CartService, private orderService: OrderService, private addressService: AddressService, private router: Router) { }
 
@@ -24,10 +25,15 @@ export class OrderSummaryComponent implements OnInit {
   }
 
   onOrderPlaced() {
-    this.orderService.addToOrder(new Order(this.cartItems.splice(0),new Date(), this.addressService.getAddress(), this.totalAmount,"Ordered"));
+    this.orderService.addToOrder(new Order(this.cartItems.splice(0), new Date(), this.addressService.getAddress(), this.totalAmount, "Ordered"));
+    this.message = "Your order has been placed";
+    
+  }
+
+  onClose(){
+    this.message = null;
     this.cartService.clearCart();
     this.cartService.updateCart();
-    alert("Your order has been placed");
-    this.router.navigate(['/products']);
+    this.router.navigate(['/myorders']);
   }
 }

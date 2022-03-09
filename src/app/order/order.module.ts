@@ -1,3 +1,4 @@
+import { AlertModule } from './../alert/alert.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
@@ -15,7 +16,8 @@ import { OrderComponent } from './order.component';
   ],
   imports: [
     CommonModule,
-    OrderRoutingModule
+    OrderRoutingModule,
+    AlertModule
   ]
 })
 export class OrderModule { }
