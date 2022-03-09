@@ -1,70 +1,75 @@
-<div class="card mt-3 mx-auto" style="max-width: 80%;">
-    <div class="row g-0">
-        <div class="col-md-8">
-            <div class="card-body">
-                <h5 class="card-title">Shipping Details</h5>
-                <div class="card-text">
-                    <address>
-                        {{order.address}}
-                    </address>
+<div *ngIf="isLoading">
+    <app-loading></app-loading>
+</div>
+<div *ngIf="!isLoading">
+    <div class="card mt-3 mx-auto" style="max-width: 80%;">
+        <div class="row g-0">
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Shipping Details</h5>
+                    <div class="card-text">
+                        <address>
+                            {{order.address}}
+                        </address>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="card mx-auto" style="max-width: 80%;">
-    <div class="row g-0">
-        <div class="col-md-12">
-            <div class="card-body">
-                <h5 class="card-title">Order Details</h5>
-                <div *ngFor="let orderItem of order.orderItems">
-                    <div class="card mb-3">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <img [src]="orderItem.product.imagePath" class="img-fluid rounded-start float-start p-4"
-                                    width="100%">
-                            </div>
-                            <div class="col-md-10">
-                                <div class="card-body">
-                                    <div class="row mt-2">
-                                        <div class="col-md-10 col-8">
-                                            <h5 class="card-title">{{orderItem.product.name}}</h5>
-                                            <p class="card-text text-secondary "> {{orderItem.product.price |
-                                                currency:'INR':'Rs.'}}</p>
-                                            Quantity: {{orderItem.count}}
-                                        </div>
-                                        <div class="col-md-2 col-4">
-                                            <p class="card-text text-secondary h4 float-end mx-2">
-                                                {{orderItem.product.price * orderItem.count | currency:'INR':'Rs.'}}
-                                            </p>
+    <div class="card mx-auto" style="max-width: 80%;">
+        <div class="row g-0">
+            <div class="col-md-12">
+                <div class="card-body">
+                    <h5 class="card-title">Order Details</h5>
+                    <div *ngFor="let orderItem of order.orderItems">
+                        <div class="card mb-3">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <img [src]="orderItem.product.imagePath"
+                                        class="img-fluid rounded-start float-start p-4" width="100%">
+                                </div>
+                                <div class="col-md-10">
+                                    <div class="card-body">
+                                        <div class="row mt-2">
+                                            <div class="col-md-10 col-8">
+                                                <h5 class="card-title">{{orderItem.product.name}}</h5>
+                                                <p class="card-text text-secondary "> {{orderItem.product.price |
+                                                    currency:'INR':'Rs.'}}</p>
+                                                Quantity: {{orderItem.count}}
+                                            </div>
+                                            <div class="col-md-2 col-4">
+                                                <p class="card-text text-secondary h4 float-end mx-2">
+                                                    {{orderItem.product.price * orderItem.count | currency:'INR':'Rs.'}}
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <div class="row mx-auto">
-                    <hr>
-                    <div class="mb-4">
-                        <div class="float-start">Total Amount</div>
-                        <div class="float-end">{{order.orderAmount | currency:'INR':'Rs.' }}</div>
-                        <br>
-                        <div class="float-start">Delivery Charges</div>
-                        <div class="float-end">{{100 | currency:'INR':'Rs.' }}</div>
-                        <br>
-                        <div class="float-start text-danger">Discount</div>
-                        <div class="float-end text-danger">{{order.orderAmount*0.05 | currency:'INR':'Rs.' }}</div>
-                        <br>
+                    <br>
+                    <div class="row mx-auto">
                         <hr>
-                        <div class="float-start text-success h5">Net Amount</div>
-                        <div class="float-end text-success h5">{{order.orderAmount+100-order.orderAmount*0.05 |
-                            currency:'INR':'Rs.' }}</div>
+                        <div class="mb-4">
+                            <div class="float-start">Total Amount</div>
+                            <div class="float-end">{{order.orderAmount | currency:'INR':'Rs.' }}</div>
+                            <br>
+                            <div class="float-start">Delivery Charges</div>
+                            <div class="float-end">{{100 | currency:'INR':'Rs.' }}</div>
+                            <br>
+                            <div class="float-start text-danger">Discount</div>
+                            <div class="float-end text-danger">{{order.orderAmount*0.05 | currency:'INR':'Rs.' }}</div>
+                            <br>
+                            <hr>
+                            <div class="float-start text-success h5">Net Amount</div>
+                            <div class="float-end text-success h5">{{order.orderAmount+100-order.orderAmount*0.05 |
+                                currency:'INR':'Rs.' }}</div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <br><br>
 </div>
-<br><br>

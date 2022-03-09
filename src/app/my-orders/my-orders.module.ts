@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 
 import { MyOrdersRoutingModule } from './my-orders-routing.module';
 import { MyOrdersDetailComponent } from './my-orders-detail/my-orders-detail.component';
+import { LoadingModule } from '../loading/loading.module';
 
 
 @NgModule({
@@ -13,11 +14,12 @@ import { MyOrdersDetailComponent } from './my-orders-detail/my-orders-detail.com
     MyOrdersComponent,
     MyOrdersListComponent,
     MyOrdersItemComponent,
-    MyOrdersDetailComponent
+    MyOrdersDetailComponent,
   ],
   imports: [
     CommonModule,
-    MyOrdersRoutingModule
+    MyOrdersRoutingModule,
+    LoadingModule
   ]
 })
 export class MyOrdersModule { }

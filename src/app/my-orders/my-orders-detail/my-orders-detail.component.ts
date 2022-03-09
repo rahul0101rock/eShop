@@ -12,14 +12,20 @@ export class MyOrdersDetailComponent implements OnInit {
 
   order!: Order;
   id!: number;
+  isLoading = false;
 
-  constructor(private orderService: OrderService,private route: ActivatedRoute) { }
+  constructor(private orderService: OrderService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(
       (params: Params) => {
         this.id = +params['id'];
-        this.order = this.orderService.getOrder(this.id);
+        this.isLoading = true;
+        setTimeout(() => {
+          this.order = this.orderService.getOrder(this.id);
+          this.isLoading = false;
+        }, 300);
+
       }
     );
   }

@@ -1,4 +1,4 @@
-import { LoadingComponent } from './../loading/loading.component';
+import { LoadingModule } from './../loading/loading.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
 import { LoginComponent } from './login/login.component';
@@ -12,13 +12,13 @@ import { AuthRoutingModule } from './auth-routing.module';
   declarations: [
     LoginComponent,
     SignupComponent,
-    LoadingComponent,
   ],
   imports: [
     CommonModule,
     AuthRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    LoadingModule
   ]
 })
 export class AuthModule { }

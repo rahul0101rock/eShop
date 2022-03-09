@@ -14,7 +14,6 @@ export class MyOrdersListComponent implements OnInit {
   constructor(private orderService: OrderService) { }
 
   ngOnInit(): void {
-    this.orderService.setOrders();
     this.orders = this.orderService.getOrders();
   }
 
