@@ -1,5 +1,3 @@
-import { CartService } from './cart/cart.service';
-import { ProductService } from './products/product.service';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -30,7 +28,7 @@ const analytics = getAnalytics(app);
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

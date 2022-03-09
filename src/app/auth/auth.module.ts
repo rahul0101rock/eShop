@@ -1,3 +1,4 @@
+import { AlertModule } from './../alert/alert.module';
 import { LoadingModule } from './../loading/loading.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SignupComponent } from './signup/signup.component';
@@ -18,7 +19,8 @@ import { AuthRoutingModule } from './auth-routing.module';
     AuthRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    LoadingModule
+    LoadingModule,
+    AlertModule
   ]
 })
 export class AuthModule { }
