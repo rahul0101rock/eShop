@@ -23,7 +23,7 @@ export class OrderService {
 
   addToOrder(order: Order) {
     this.orders.push(order);
-    this.updateOrders();
+    this.updateOrders(order);
   }
 
   setOrders() {
@@ -45,11 +45,11 @@ export class OrderService {
     );
   }
 
-  updateOrders() {
+  updateOrders(order: Order) {
     auth.onAuthStateChanged(auth.getAuth(),
       user => {
         if (user) {
-          this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/orders/" + user.uid + ".json", this.orders).subscribe();
+          this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/orders/" + user.uid + "/" + (this.orders.length-1) + ".json", order).subscribe();
         }
       }
     );
