@@ -1,7 +1,7 @@
-import { Store } from '@ngrx/store';
-import { map, Observable, Subscription } from 'rxjs';
-import { Cart } from './cart.model';
 import { CartService } from './cart.service';
+import { Store } from '@ngrx/store';
+import { map, Subscription } from 'rxjs';
+import { Cart } from './cart.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as fromApp from '../store/app.reducer';
 
@@ -15,7 +15,7 @@ export class CartComponent implements OnInit,OnDestroy {
     cartItems!: Cart[];
     storeSub!: Subscription;
 
-    constructor(private cartService: CartService, private store: Store<fromApp.AppState>) { }
+    constructor(private store: Store<fromApp.AppState>, private cartService: CartService) { }
 
     ngOnInit(): void {
         this.storeSub = this.store.select('cart')
@@ -25,6 +25,7 @@ export class CartComponent implements OnInit,OnDestroy {
                     this.cartItems = cart;
                 }
             );
+        this.cartService.setCartItems();
     }
 
     ngOnDestroy(): void {

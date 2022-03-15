@@ -1,4 +1,3 @@
-import { TotalAmount } from './../store/cart.actions';
 import { Store } from '@ngrx/store';
 import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
 import { Subscription } from 'rxjs';

@@ -36,9 +36,5 @@ export class ProductService {
     return this.products[index];
   }
 
-  producttoCart(product: Product, index: number) {
-    this.cartService.addTOCart(new Cart(product, 1, index));
-  }
-
   constructor(public cartService: CartService) { }
 }

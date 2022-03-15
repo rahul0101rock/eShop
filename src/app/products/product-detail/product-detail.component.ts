@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Cart } from './../../cart/cart.model';
@@ -6,20 +7,21 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import * as cartActions from '../../cart/store/cart.actions';
 import * as fromApp from '../../store/app.reducer';
+import * as auth from 'firebase/auth';
 
 @Component({
     selector: 'app-product-detail',
     templateUrl: './product-detail.component.html',
     styleUrls: ['./product-detail.component.css']
 })
-export class ProductDetailComponent implements OnInit,OnDestroy {
+export class ProductDetailComponent implements OnInit, OnDestroy {
 
     product!: Product;
     id!: number;
     addedToCart = false;
-    storeSub! : Subscription;
+    storeSub!: Subscription;
 
-    constructor(private route: ActivatedRoute, private store: Store<fromApp.AppState>) { }
+    constructor(private route: ActivatedRoute, private http: HttpClient, private store: Store<fromApp.AppState>) { }
 
     ngOnInit(): void {
         this.route.params.subscribe(
@@ -50,7 +52,18 @@ export class ProductDetailComponent implements OnInit,OnDestroy {
     }
 
     onAddToCart() {
-        this.store.dispatch(new cartActions.AddToCart(new Cart(this.product,1,this.id)));
+        this.store.dispatch(new cartActions.AddToCart(new Cart(this.product, 1, this.id)));
+        this.storeSub = this.store.select('cart').subscribe(
+            cartState => {
+                auth.onAuthStateChanged(auth.getAuth(),
+                    user => {
+                        if (user) {
+                            this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", cartState.cartItems).subscribe();
+                        }
+                    }
+                );
+            }
+        );
         this.addedToCart = true;
     }
 }

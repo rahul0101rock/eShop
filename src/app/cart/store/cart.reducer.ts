@@ -20,6 +20,11 @@ export function cartReducer(state = initialState, action: Action) {
                 ...state,
                 cartItems: [...state.cartItems, addTOCartAction.payload]
             }
+        case cartActions.CLEAR_CART:
+            return {
+                ...state,
+                cartItems: []
+            }
         case cartActions.CHANGE_COUNT:
             const changeCountAction = action as cartActions.ChangeCount;
             const cartItem = state.cartItems[changeCountAction.payload.index];

@@ -1,79 +1,59 @@
+import { Store } from '@ngrx/store';
 import { HttpClient } from '@angular/common/http';
 import { Cart } from './cart.model';
 import { Injectable } from '@angular/core';
 import * as auth from 'firebase/auth';
+import * as fromApp from '../store/app.reducer';
+import * as cartActions from './store/cart.actions';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class CartService {
 
-  private cartItems: Cart[] = [];
+    private cartItems: Cart[] = [];
 
-  public totalAmnt = 0;
+    public totalAmnt = 0;
 
 
-  constructor(private http: HttpClient) {
-    this.setCartItems();
-  }
-
-  setCartItems(){
-    auth.onAuthStateChanged(auth.getAuth(),
-      user => {
-        if (user) {
-          this.http.get<Cart[]>("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json").subscribe(
-            cartItems => {
-              if(cartItems){
-                this.clearCart();
-                for(let cartItem of cartItems){
-                  this.cartItems.push(new Cart(cartItem.product,cartItem.count,cartItem.productIndex));
-                }
-              }
-            }
-          );
-        }
-      }
-    );
-  }
-
-  getCartItems() {
-    return this.cartItems;
-  }
-
-  addTOCart(cart: Cart) {
-    this.cartItems.push(cart);
-    this.updateCart();
-  }
-
-  changeCount(index: number, newcount: number) {
-    this.cartItems[index].count = newcount;
-    this.updateCart();
-  }
-
-  removeCartItem(index: number) {
-    this.cartItems.splice(index, 1);
-    this.updateCart();
-  }
-
-  totalAmount() {
-    let totalAmount = 0
-    for (let item of this.cartItems) {
-      totalAmount += item.product.price * item.count;
+    constructor(private http: HttpClient, private store: Store<fromApp.AppState>) {
+        this.setCartItems();
     }
-    this.totalAmnt = totalAmount;
-  }
 
-  updateCart() {
-    auth.onAuthStateChanged(auth.getAuth(),
-      user => {
-        if (user) {
-          this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", this.cartItems).subscribe();
-        }
+    setCartItems() {
+        auth.onAuthStateChanged(auth.getAuth(),
+            user => {
+                if (user) {
+                    this.http.get<Cart[]>("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json").subscribe(
+                        cartItems => {
+                            if (cartItems) {
+                                this.store.dispatch(new cartActions.ClearCart());
+                                for (let item  of cartItems){
+                                    this.store.dispatch(new cartActions.AddToCart(item));
+                                }
+                            }
+                        }
+                    );
+                }
+            }
+        );
+    }
+
+    getCartItems() {
+        return this.cartItems;
       }
-    );
-  }
 
-  clearCart(){
-    this.cartItems.splice(0,this.cartItems.length);
-  }
+    updateCart() {
+        auth.onAuthStateChanged(auth.getAuth(),
+            user => {
+                if (user) {
+                    this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", this.cartItems).subscribe();
+                }
+            }
+        );
+    }
+
+    clearCart(){
+      }
+
 }
