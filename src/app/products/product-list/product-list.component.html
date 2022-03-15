@@ -14,7 +14,7 @@
         </div>
         <ng-template #search>
             <div class="col-md-9 mx-auto">
-                <app-product-item *ngFor="let product of products; let i = index" [product]="product" [index]="i">
+                <app-product-item *ngFor="let product of (products | async )?.products; let i = index" [product]="product" [index]="i">
                 </app-product-item>
             </div>
         </ng-template>
