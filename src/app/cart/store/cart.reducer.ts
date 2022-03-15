@@ -4,10 +4,12 @@ import * as cartActions from './cart.actions';
 
 export interface State {
     cartItems: Cart[];
+    totalAmount: number;
 }
 
 const initialState: State = {
-    cartItems: []
+    cartItems: [],
+    totalAmount: 0
 }
 
 export function cartReducer(state = initialState, action: Action) {
@@ -39,6 +41,15 @@ export function cartReducer(state = initialState, action: Action) {
                         return cartIndex != removeFormCartAction.payload;
                     }
                 )
+            }
+        case cartActions.TOTAL_AMOUNT:
+            let totalAmnt = 0;
+            for(let item of state.cartItems){
+                totalAmnt += item.product.price * item.count;
+            }
+            return {
+                ...state,
+                totalAmount: totalAmnt
             }
         default:
             return state;
