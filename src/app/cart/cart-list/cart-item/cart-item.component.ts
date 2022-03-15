@@ -1,6 +1,9 @@
+import { Store } from '@ngrx/store';
 import { CartService } from './../../cart.service';
 import { Cart } from './../../cart.model';
 import { Component, Input, OnInit } from '@angular/core';
+import * as fromApp from '../../../store/app.reducer';
+import * as cartActions from '../../store/cart.actions';
 
 @Component({
   selector: 'app-cart-item',
@@ -12,19 +15,19 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem!: Cart;
   @Input() index!: number;
 
-  constructor(private cartService: CartService) { }
+  constructor(private cartService: CartService, private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
   }
 
   onIncreaseCount() {
     const c = this.cartItem.count + 1;
-    this.cartService.changeCount(this.index, c);
+    this.store.dispatch(new cartActions.ChangeCount({index: this.index, count: c}));
   }
 
   onDecreaseCount() {
     const c = this.cartItem.count - 1;
-    this.cartService.changeCount(this.index, c);
+    this.store.dispatch(new cartActions.ChangeCount({index: this.index, count: c}));
   }
 
   onRemoveItem() {
