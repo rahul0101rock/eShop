@@ -1,3 +1,5 @@
+import { appReducer } from './store/app.reducer';
+import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -10,6 +12,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import { cartReducer } from './cart/store/cart.reducer';
+import { productsReducer } from './products/store/products.reducer';
 
 const firebaseConfig = {
   apiKey: "AIzaSyBilvV3l34Et0OMiN5UD3zR3ffRReuah34",
@@ -34,7 +38,8 @@ const analytics = getAnalytics(app);
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(appReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]

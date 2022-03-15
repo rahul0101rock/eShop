@@ -6,8 +6,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ProductsRoutingModule } from './products-routing.module';
-import { StoreModule } from '@ngrx/store';
-import { productsReducer } from './store/products.reducer';
 
 
 @NgModule({
@@ -19,8 +17,7 @@ import { productsReducer } from './store/products.reducer';
   ],
   imports: [
     CommonModule,
-    ProductsRoutingModule,
-    StoreModule.forRoot({products: productsReducer})
+    ProductsRoutingModule
   ]
 })
 export class ProductsModule { }

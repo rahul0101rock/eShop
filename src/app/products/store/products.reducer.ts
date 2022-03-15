@@ -1,7 +1,11 @@
 import { Action } from '@ngrx/store';
 import { Product } from './../product.model';
 
-const intialState = {
+export interface State{
+    products: Product[];
+}
+
+const initialState: State = {
     products: [
         new Product("Boat Rockerz 510 Bluetooth Headphones",
             "Rockerz 510 promises a battery back up of upto 20 hours and a standyby time of 250 hours. The foam inside the ear pads adapts to your ears with just the right pressure ensuring great comfort and also delivering authentic sound.It comes with dual connectivity, wireless via its bluetooth and wired with its aux port.",
@@ -23,7 +27,7 @@ const intialState = {
     ]
 };
 
-export function productsReducer( state = intialState, action: Action ){
+export function productsReducer( state = initialState, action: Action ){
     switch(action.type){
         default:
             return state;

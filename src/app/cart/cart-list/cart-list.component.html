@@ -1,6 +1,6 @@
 <div class="container-fluid d-flex flex-column">
     <div class="row mt-4">
-        <div class="col-9 mx-auto" *ngIf="cartItems.length>0; else cartEmpty">
+        <div class="col-9 mx-auto" *ngIf="cartItems; else cartEmpty">
             <app-cart-item *ngFor="let item of cartItems; let i = index" [cartItem]="item" [index]="i"></app-cart-item>
         </div>
         <ng-template #cartEmpty>

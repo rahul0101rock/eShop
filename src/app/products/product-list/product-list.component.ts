@@ -4,6 +4,7 @@ import { Product } from './../product.model';
 import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
+import * as fromApp from '../../store/app.reducer';
 
 @Component({
     selector: 'app-product-list',
@@ -16,7 +17,7 @@ export class ProductListComponent implements OnInit {
     searchProducts!: { product: Product, index: number }[];
     searchText!: string;
 
-    constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store<{ products: { products: Product[] } }>) { }
+    constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store<fromApp.AppState>) { }
 
     ngOnInit(): void {
         this.products = this.store.select('products');
