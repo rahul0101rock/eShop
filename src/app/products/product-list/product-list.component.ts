@@ -17,7 +17,7 @@ export class ProductListComponent implements OnInit {
     searchProducts!: { product: Product, index: number }[];
     searchText!: string;
 
-    constructor(private productService: ProductService, private route: ActivatedRoute, private store: Store<fromApp.AppState>) { }
+    constructor(private route: ActivatedRoute, private store: Store<fromApp.AppState>) { }
 
     ngOnInit(): void {
         this.products = this.store.select('products');

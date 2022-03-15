@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CartListComponent implements OnInit {
 
-  @Input() cartItems!: Cart[] | undefined;
+  @Input() cartItems!: Cart[];
 
   constructor() { }
 

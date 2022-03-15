@@ -1,8 +1,8 @@
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { map, Observable, Subscription } from 'rxjs';
 import { Cart } from './cart.model';
 import { CartService } from './cart.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as fromApp from '../store/app.reducer';
 
 @Component({
@@ -10,13 +10,24 @@ import * as fromApp from '../store/app.reducer';
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit {
+export class CartComponent implements OnInit,OnDestroy {
 
-    cartItems!: Observable<{ cartItems: Cart[] }>;
+    cartItems!: Cart[];
+    storeSub!: Subscription;
 
     constructor(private cartService: CartService, private store: Store<fromApp.AppState>) { }
 
     ngOnInit(): void {
-        this.cartItems = this.store.select('cart');
+        this.storeSub = this.store.select('cart')
+            .pipe(map( cartState => cartState.cartItems ))
+            .subscribe(
+                (cart: Cart[]) => {
+                    this.cartItems = cart;
+                }
+            );
+    }
+
+    ngOnDestroy(): void {
+        this.storeSub.unsubscribe();
     }
 }

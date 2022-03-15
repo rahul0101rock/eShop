@@ -1,8 +1,10 @@
-import { CartService } from './../cart/cart.service';
+import { Subscription } from 'rxjs';
+import { Store } from '@ngrx/store';
 import { Cart } from './../cart/cart.model';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import * as auth from 'firebase/auth';
+import * as fromApp from '../store/app.reducer'
 
 @Component({
   selector: 'app-header',
@@ -12,16 +14,21 @@ import * as auth from 'firebase/auth';
 export class HeaderComponent implements OnInit {
 
   searchText = "";
-  cartItems!: Cart[];
+  cartItemsLength!: number;
   loggedIn: boolean = false;
   user: auth.User | null = null;
   timer!: ReturnType<typeof setTimeout>;
+  storeSub!: Subscription;
 
-  constructor(private cartService: CartService, private router: Router) { }
+  constructor(private router: Router, private store : Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
-    this.cartService.setCartItems();
-    this.cartItems = this.cartService.getCartItems();
+    this.storeSub = this.store.select('cart').subscribe(
+        cartState => {
+            this.cartItemsLength = cartState.cartItems.length;
+        }
+    );
+
     if (this.user) {
       this.loggedIn = true;
     } else {
