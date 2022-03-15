@@ -15,7 +15,7 @@ export class CartItemComponent implements OnInit {
   @Input() cartItem!: Cart;
   @Input() index!: number;
 
-  constructor(private cartService: CartService, private store: Store<fromApp.AppState>) { }
+  constructor(private store: Store<fromApp.AppState>) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +31,6 @@ export class CartItemComponent implements OnInit {
   }
 
   onRemoveItem() {
-    this.cartService.removeCartItem(this.index);
+    this.store.dispatch(new cartActions.RemoveFormCart(this.index));
   }
 }

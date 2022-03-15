@@ -30,6 +30,16 @@ export function cartReducer(state = initialState, action: Action) {
                 ...state,
                 cartItems: updatedCartItems
             }
+        case cartActions.REMOVE_FROM_CART:
+            const removeFormCartAction = action as cartActions.RemoveFormCart;
+            return {
+                ...state,
+                cartItems: state.cartItems.filter(
+                    (cart,cartIndex) => {
+                        return cartIndex != removeFormCartAction.payload;
+                    }
+                )
+            }
         default:
             return state;
     }
