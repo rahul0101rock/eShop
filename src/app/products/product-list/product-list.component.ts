@@ -1,7 +1,6 @@
 import { Observable } from 'rxjs';
 import { ActivatedRoute, Params } from '@angular/router';
 import { Product } from './../product.model';
-import { ProductService } from './../product.service';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import * as fromApp from '../../store/app.reducer';
