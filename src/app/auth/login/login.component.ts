@@ -1,8 +1,7 @@
-import { CartService } from './../../cart/cart.service';
 import { Router } from '@angular/router';
 import { AuthService } from './../auth.service';
 import { NgForm } from '@angular/forms';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +13,7 @@ export class LoginComponent implements OnInit {
   isLoading = false;
   error = null;
 
-  constructor(private authService: AuthService, private router: Router, private cartService: CartService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -24,7 +23,6 @@ export class LoginComponent implements OnInit {
     this.authService.login(form.value['email'], form.value['password']).then(
       response => {
         this.isLoading = false;
-        this.cartService.setCartItems();
         this.router.navigate(['/products']);
       }, error => {
         this.isLoading = false;

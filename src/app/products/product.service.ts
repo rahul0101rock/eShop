@@ -1,7 +1,5 @@
-import { CartService } from './../cart/cart.service';
 import { Product } from './product.model';
 import { Injectable } from '@angular/core';
-import { Cart } from '../cart/cart.model';
 
 @Injectable({
   providedIn: 'root'
@@ -36,5 +34,4 @@ export class ProductService {
     return this.products[index];
   }
 
-  constructor(public cartService: CartService) { }
 }
