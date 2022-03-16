@@ -25,7 +25,10 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.storeSub = this.store.select('cart').subscribe(
         cartState => {
-            this.cartItemsLength = cartState.cartItems.length;
+            this.cartItemsLength = 0;
+            for(let cartItem of cartState.cartItems){
+                this.cartItemsLength += cartItem.count;
+            }
         }
     );
 

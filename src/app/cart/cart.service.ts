@@ -28,7 +28,7 @@ export class CartService {
                         cartItems => {
                             if (cartItems) {
                                 this.store.dispatch(new cartActions.ClearCart());
-                                for (let item  of cartItems){
+                                for (let item of cartItems) {
                                     this.store.dispatch(new cartActions.AddToCart(item));
                                 }
                             }
@@ -41,7 +41,7 @@ export class CartService {
 
     getCartItems() {
         return this.cartItems;
-      }
+    }
 
     updateCart() {
         auth.onAuthStateChanged(auth.getAuth(),
@@ -53,7 +53,7 @@ export class CartService {
         );
     }
 
-    clearCart(){
-      }
+    clearCart() {
+    }
 
 }

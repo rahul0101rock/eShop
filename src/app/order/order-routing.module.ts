@@ -1,3 +1,4 @@
+import { OrderResolver } from './order.resolver';
 import { AuthGuard } from './../auth/auth.guard';
 import { OrderComponent } from './order.component';
 import { OrderGuard } from './order.guard';
@@ -5,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', component: OrderComponent, canActivate: [OrderGuard,AuthGuard] }
+  { path: '', component: OrderComponent, canActivate: [OrderGuard,AuthGuard], resolve: [OrderResolver] }
 ];
 
 @NgModule({

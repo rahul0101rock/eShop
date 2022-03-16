@@ -53,15 +53,17 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
 
     onAddToCart() {
         this.store.dispatch(new cartActions.AddToCart(new Cart(this.product, 1, this.id)));
+        let cartItems: Cart[];
         this.storeSub = this.store.select('cart').subscribe(
             cartState => {
-                auth.onAuthStateChanged(auth.getAuth(),
-                    user => {
-                        if (user) {
-                            this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", cartState.cartItems).subscribe();
-                        }
-                    }
-                );
+                cartItems = cartState.cartItems;
+            }
+        );
+        auth.onAuthStateChanged(auth.getAuth(),
+            user => {
+                if (user) {
+                    this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", cartItems).subscribe();
+                }
             }
         );
         this.addedToCart = true;

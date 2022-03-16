@@ -48,15 +48,17 @@ export class CartItemComponent implements OnInit {
 
     onRemoveItem() {
         this.store.dispatch(new cartActions.RemoveFormCart(this.index));
+        let cartItems: Cart[];
         this.store.select('cart').subscribe(
             cartState => {
-                auth.onAuthStateChanged(auth.getAuth(),
-                    user => {
-                        if (user) {
-                            this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", cartState.cartItems).subscribe();
-                        }
-                    }
-                );
+                cartItems = cartState.cartItems;
+            }
+        );
+        auth.onAuthStateChanged(auth.getAuth(),
+            user => {
+                if (user) {
+                    this.http.put("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json", cartItems).subscribe();
+                }
             }
         );
     }
