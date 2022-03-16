@@ -18,8 +18,7 @@ import { LoadingModule } from '../loading/loading.module';
   ],
   imports: [
     CommonModule,
-    MyOrdersRoutingModule,
-    LoadingModule
+    MyOrdersRoutingModule
   ]
 })
 export class MyOrdersModule { }

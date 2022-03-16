@@ -1,4 +1,3 @@
-import { CartResolver } from './../cart/cart.resolver';
 import { AuthGuard } from './../auth/auth.guard';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -7,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [{
-    path: '', component: ProductsComponent, canActivate: [AuthGuard], resolve: [CartResolver], children: [
+    path: '', component: ProductsComponent, canActivate: [AuthGuard], children: [
         { path: '', component: ProductListComponent },
         { path: ':id', component: ProductDetailComponent },
     ]

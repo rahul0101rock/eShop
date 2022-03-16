@@ -1,4 +1,3 @@
-import { CartResolver } from './cart.resolver';
 import { AuthGuard } from './../auth/auth.guard';
 import { CartComponent } from './cart.component';
 import { NgModule } from '@angular/core';
