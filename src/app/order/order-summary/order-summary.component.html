@@ -15,7 +15,7 @@
                                 <div class="card-body">
                                     <div class="row mt-2">
                                         <div class="col-md-10 col-8">
-                                            <h5 class="card-title">{{cartItem.product.name}}</h5>
+                                            <h4 class="card-title">{{cartItem.product.name}}</h4>
                                             <p class="card-text text-secondary "> {{cartItem.product.price |
                                                 currency:'INR':'Rs.'}}</p>
                                             Quantity: {{cartItem.count}}
@@ -57,3 +57,4 @@
 <div class="row col-8 col-md-2 mx-auto my-5">
     <button class="btn btn-outline-success" (click)="onOrderPlaced()">Place Order</button>
 </div>
+<br><br>

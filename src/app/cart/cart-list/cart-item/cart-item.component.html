@@ -7,8 +7,8 @@
             <div class="card-body">
                 <div class="row mt-2">
                     <div class="col-md-10 col-8">
-                        <h5 class="card-title"><a class="item"
-                                [routerLink]="['../products',cartItem.productIndex]">{{cartItem.product.name}}</a></h5>
+                        <h4 class="card-title"><a class="item"
+                                [routerLink]="['../products',cartItem.productIndex]">{{cartItem.product.name}}</a></h4>
                         <p class="card-text text-secondary "> {{cartItem.product.price | currency:'INR':'Rs.'}}</p>
                         <div class="input-group">
                             <button type="button" class="btn btn-outline-light text-secondary"
@@ -21,7 +21,7 @@
                         </div>
                     </div>
                     <div class="col-md-2 col-4">
-                        <p class="card-text text-secondary h5 float-end">{{cartItem.product.price * cartItem.count |
+                        <p class="card-text text-secondary h4 float-end">{{cartItem.product.price * cartItem.count |
                             currency:'INR':'Rs.'}}</p>
                     </div>
                 </div>

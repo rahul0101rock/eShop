@@ -6,9 +6,9 @@
         </div>
         <div class="col-md-6">
             <div class="card-body">
-                <h5 class="card-title display-4">{{product.name}}</h5>
+                <div class="card-title display-4">{{product.name}}</div>
                 <p class="card-text">{{product.description}}</p>
-                <p class="card-text text-primary h4">{{product.price | currency:'INR':'Rs.'}}</p>
+                <p class="card-text text-primary h2">{{product.price | currency:'INR':'Rs.'}}</p>
                 <p class="card-text"><small class="text-muted"><span class="badge rounded-pill bg-secondary me-2"
                             *ngFor="let cat of product.category">{{cat}}</span></small></p>
                 <div *ngIf="!addedToCart; else added">
