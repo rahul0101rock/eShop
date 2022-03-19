@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
     padding: 0;
 }
 .btn:focus {
@@ -6,6 +6,6 @@
     box-shadow: none;
 }
 .form-control:focus {
-outline: none;
-box-shadow: none;
+    outline: none;
+    box-shadow: none;
 }

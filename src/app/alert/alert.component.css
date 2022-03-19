@@ -1,4 +1,4 @@
-.backdrop{
+.backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,7 +8,7 @@
     z-index: 50;
 }
 
-.alert-box{
+.alert-box {
     position: fixed;
     top: 40vh;
     left: 20vw;

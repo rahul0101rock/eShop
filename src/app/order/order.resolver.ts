@@ -1,3 +1,4 @@
+import { OrderStore } from './store/order.store';
 import { Store } from '@ngrx/store';
 import { Order } from './order.model';
 import { HttpClient } from '@angular/common/http';
@@ -17,7 +18,7 @@ import { Observable, of } from 'rxjs';
 })
 export class OrderResolver implements Resolve<boolean> {
 
-    constructor(private http: HttpClient,private store: Store<fromApp.AppState>) { }
+    constructor(private http: HttpClient, private orderStore: OrderStore) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
         auth.onAuthStateChanged(auth.getAuth(),
@@ -26,9 +27,9 @@ export class OrderResolver implements Resolve<boolean> {
                     this.http.get<Order[]>("https://eshop-rahul-default-rtdb.firebaseio.com/orders/" + user.uid + ".json").subscribe(
                         orders => {
                             if (orders) {
-                                this.store.dispatch(new orderActions.ClearOrders());
-                                for(let order of orders){
-                                    this.store.dispatch(new orderActions.AddToOrders(order));
+                                this.orderStore.ClearOrder();
+                                for (let order of orders) {
+                                    this.orderStore.AddToOrder(order);
                                 }
                             }
                         }

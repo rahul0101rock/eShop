@@ -10,16 +10,16 @@ import { OrderComponent } from './order.component';
 
 
 @NgModule({
-  declarations: [
-    OrderComponent,
-    OrderSummaryComponent,
-    OrderAddressComponent
-  ],
-  imports: [
-    CommonModule,
-    OrderRoutingModule,
-    AlertModule,
-    FormsModule
-  ]
+    declarations: [
+        OrderComponent,
+        OrderSummaryComponent,
+        OrderAddressComponent
+    ],
+    imports: [
+        CommonModule,
+        OrderRoutingModule,
+        AlertModule,
+        FormsModule
+    ]
 })
 export class OrderModule { }

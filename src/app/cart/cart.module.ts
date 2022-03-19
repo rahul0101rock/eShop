@@ -10,15 +10,15 @@ import { CartRoutingModule } from './cart-routing.module';
 
 
 @NgModule({
-  declarations: [
-    CartComponent,
-    CartListComponent,
-    CartItemComponent,
-    CartAmountComponent,
-  ],
-  imports: [
-    CommonModule,
-    CartRoutingModule
-  ]
+    declarations: [
+        CartComponent,
+        CartListComponent,
+        CartItemComponent,
+        CartAmountComponent,
+    ],
+    imports: [
+        CommonModule,
+        CartRoutingModule
+    ]
 })
 export class CartModule { }

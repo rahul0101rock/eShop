@@ -4,26 +4,26 @@ import { Observable } from 'rxjs';
 import * as auth from 'firebase/auth';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private router: Router) { }
+    constructor(private router: Router) { }
 
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return new Promise((resolve, reject) => {
-      auth.onAuthStateChanged(auth.getAuth(),
-        user => {
-          if (user) {
-            resolve(true);
-          } else {
-            this.router.navigate(['/auth/login']);
-            resolve(false);
-          }
-        })
-    });
-  }
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+        return new Promise((resolve, reject) => {
+            auth.onAuthStateChanged(auth.getAuth(),
+                user => {
+                    if (user) {
+                        resolve(true);
+                    } else {
+                        this.router.navigate(['/auth/login']);
+                        resolve(false);
+                    }
+                })
+        });
+    }
 
 }
