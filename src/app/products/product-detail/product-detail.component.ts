@@ -1,3 +1,4 @@
+import { ProductStore } from './../store/products.store';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -21,15 +22,15 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     addedToCart = false;
     storeSub!: Subscription;
 
-    constructor(private route: ActivatedRoute, private http: HttpClient, private store: Store<fromApp.AppState>) { }
+    constructor(private route: ActivatedRoute, private http: HttpClient, private store: Store<fromApp.AppState>, private productStore: ProductStore) { }
 
     ngOnInit(): void {
         this.route.params.subscribe(
             (params: Params) => {
                 this.id = +params['id'];
-                this.storeSub = this.store.select('products').subscribe(
+                this.storeSub = this.productStore.products$.subscribe(
                     stateData => {
-                        this.product = stateData.products[this.id];
+                        this.product = stateData[this.id];
                     }
                 );
             }

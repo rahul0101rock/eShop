@@ -6,7 +6,6 @@ import { CommonModule } from '@angular/common';
 
 import { MyOrdersRoutingModule } from './my-orders-routing.module';
 import { MyOrdersDetailComponent } from './my-orders-detail/my-orders-detail.component';
-import { LoadingModule } from '../loading/loading.module';
 
 
 @NgModule({

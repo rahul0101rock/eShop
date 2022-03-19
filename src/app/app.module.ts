@@ -12,8 +12,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
-import { cartReducer } from './cart/store/cart.reducer';
-import { productsReducer } from './products/store/products.reducer';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const firebaseConfig = {

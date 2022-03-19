@@ -1,3 +1,4 @@
+import { ProductStore } from './store/products.store';
 import { ProductsComponent } from './products.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { ProductItemComponent } from './product-list/product-item/product-item.component';
@@ -18,6 +19,7 @@ import { ProductsRoutingModule } from './products-routing.module';
   imports: [
     CommonModule,
     ProductsRoutingModule
-  ]
+  ],
+  providers: [ProductStore]
 })
 export class ProductsModule { }
