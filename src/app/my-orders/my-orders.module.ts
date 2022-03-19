@@ -9,15 +9,15 @@ import { MyOrdersDetailComponent } from './my-orders-detail/my-orders-detail.com
 
 
 @NgModule({
-  declarations: [
-    MyOrdersComponent,
-    MyOrdersListComponent,
-    MyOrdersItemComponent,
-    MyOrdersDetailComponent,
-  ],
-  imports: [
-    CommonModule,
-    MyOrdersRoutingModule
-  ]
+    declarations: [
+        MyOrdersComponent,
+        MyOrdersListComponent,
+        MyOrdersItemComponent,
+        MyOrdersDetailComponent,
+    ],
+    imports: [
+        CommonModule,
+        MyOrdersRoutingModule
+    ]
 })
 export class MyOrdersModule { }

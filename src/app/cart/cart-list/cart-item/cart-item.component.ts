@@ -47,7 +47,7 @@ export class CartItemComponent implements OnInit {
     }
 
     onRemoveItem() {
-        this.store.dispatch(cartActions.RemoveFormCart({index: this.index}));
+        this.store.dispatch(cartActions.RemoveFormCart({ index: this.index }));
         let cartItems: Cart[];
         this.store.select('cart').subscribe(
             cartState => {

@@ -15,13 +15,13 @@ export class OrderGuard implements CanActivate {
     canActivate(
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-        let cartItems : Cart[] = [];
+        let cartItems: Cart[] = [];
         this.store.select('cart').subscribe(
             cartState => {
                 cartItems = cartState.cartItems;
             }
         );
-        if (cartItems.length >0) {
+        if (cartItems.length > 0) {
             return true;
         } else {
             this.router.navigate(['/cart']);

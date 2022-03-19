@@ -7,14 +7,18 @@
                     <address *ngIf="!inEditMode" class="col">
                         {{address}}
                     </address>
-                    <textarea rows="5" [value]="address" class="form-control col" *ngIf="inEditMode" #addressField></textarea>
-                    <button type="button" (click)="onSwitch()" class="btn btn-outline-secondary float-end col-auto mx-2" *ngIf="!inEditMode"><i class="fa fa-edit"></i></button>
+                    <textarea rows="5" [value]="address" class="form-control col" *ngIf="inEditMode"
+                        #addressField></textarea>
+                    <button type="button" (click)="onSwitch()" class="btn btn-outline-secondary float-end col-auto mx-2"
+                        *ngIf="!inEditMode"><i class="fa fa-edit"></i></button>
                     <div class="col-auto my-auto" *ngIf="inEditMode">
                         <div class="row p-4">
-                            <button type="button" (click)="onSave()" class="btn btn-outline-success float-end"><i class="fa fa-save"></i></button>
+                            <button type="button" (click)="onSave()" class="btn btn-outline-success float-end"><i
+                                    class="fa fa-save"></i></button>
                         </div>
                         <div class="row p-4">
-                            <button type="button" (click)="onSwitch()" class="btn btn-outline-danger float-end"><i class="fa fa-close"></i></button>
+                            <button type="button" (click)="onSwitch()" class="btn btn-outline-danger float-end"><i
+                                    class="fa fa-close"></i></button>
                         </div>
                     </div>
                 </div>

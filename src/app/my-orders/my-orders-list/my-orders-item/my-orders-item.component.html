@@ -5,11 +5,13 @@
                 <div class="col-md-10 col-8">
                     <div class="card-body">
                         <h5 class="card-title">{{order.dateTime | date: 'medium'}}</h5>
-                        <p class="card-text"> Order Status: <small class="text-primary">{{order.orderStatus}}</small></p>
+                        <p class="card-text"> Order Status: <small class="text-primary">{{order.orderStatus}}</small>
+                        </p>
                     </div>
                 </div>
                 <div class="col-md-2 col-4">
-                    <p class="card-text text-primary h5 float-end p-4">{{order.orderAmount+100-order.orderAmount*0.05 | currency:'INR':'Rs.'}}</p>
+                    <p class="card-text text-primary h5 float-end p-4">{{order.orderAmount+100-order.orderAmount*0.05 |
+                        currency:'INR':'Rs.'}}</p>
                 </div>
             </div>
         </div>

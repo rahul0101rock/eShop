@@ -9,7 +9,7 @@ import * as fromApp from '../store/app.reducer';
     templateUrl: './cart.component.html',
     styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit,OnDestroy {
+export class CartComponent implements OnInit, OnDestroy {
 
     cartItems!: Cart[];
     storeSub!: Subscription;
@@ -18,7 +18,7 @@ export class CartComponent implements OnInit,OnDestroy {
 
     ngOnInit(): void {
         this.storeSub = this.store.select('cart')
-            .pipe(map( cartState => cartState.cartItems ))
+            .pipe(map(cartState => cartState.cartItems))
             .subscribe(
                 (cart: Cart[]) => {
                     this.cartItems = cart;

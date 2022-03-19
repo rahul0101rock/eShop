@@ -1,3 +1,4 @@
+import { OrderStore } from './order/store/order.store';
 import { appReducer } from './store/app.reducer';
 import { StoreModule } from '@ngrx/store';
 import { NgModule } from '@angular/core';
@@ -15,13 +16,13 @@ import { getAnalytics } from "firebase/analytics";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBilvV3l34Et0OMiN5UD3zR3ffRReuah34",
-  authDomain: "eshop-rahul.firebaseapp.com",
-  projectId: "eshop-rahul",
-  storageBucket: "eshop-rahul.appspot.com",
-  messagingSenderId: "350625237276",
-  appId: "1:350625237276:web:4f66001d811f1199bf12d9",
-  measurementId: "G-DF8QJF26TH"
+    apiKey: "AIzaSyBilvV3l34Et0OMiN5UD3zR3ffRReuah34",
+    authDomain: "eshop-rahul.firebaseapp.com",
+    projectId: "eshop-rahul",
+    storageBucket: "eshop-rahul.appspot.com",
+    messagingSenderId: "350625237276",
+    appId: "1:350625237276:web:4f66001d811f1199bf12d9",
+    measurementId: "G-DF8QJF26TH"
 };
 
 
@@ -29,19 +30,19 @@ const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    FormsModule,
-    HttpClientModule,
-    StoreModule.forRoot(appReducer),
-    BrowserAnimationsModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HeaderComponent
+    ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        FormsModule,
+        HttpClientModule,
+        StoreModule.forRoot(appReducer),
+        BrowserAnimationsModule
+    ],
+    providers: [OrderStore],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

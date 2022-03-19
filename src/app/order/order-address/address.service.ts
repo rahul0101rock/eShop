@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root'
 })
 export class AddressService {
 
-  address: string = "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016";
+    address: string = "Akshya Nagar 1st Block 1st Cross, Rammurthy nagar, Bangalore-560016";
 
-  constructor() { }
+    constructor() { }
 
-  setAddress(address: string) {
-    this.address = address;
-  }
+    setAddress(address: string) {
+        this.address = address;
+    }
 
-  getAddress() {
-    return this.address;
-  }
+    getAddress() {
+        return this.address;
+    }
 }
