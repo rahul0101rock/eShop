@@ -32,9 +32,9 @@ export class HeaderComponent implements OnInit {
                     this.http.get<Cart[]>("https://eshop-rahul-default-rtdb.firebaseio.com/cart/" + user.uid + ".json").subscribe(
                         cartItems => {
                             if (cartItems) {
-                                this.store.dispatch(new cartActions.ClearCart());
+                                this.store.dispatch(cartActions.ClearCart());
                                 for (let item of cartItems) {
-                                    this.store.dispatch(new cartActions.AddToCart(item));
+                                    this.store.dispatch(cartActions.AddToCart(item));
                                 }
                             }
                         }

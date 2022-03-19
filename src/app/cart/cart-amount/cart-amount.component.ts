@@ -24,7 +24,7 @@ export class CartAmountComponent implements OnInit,DoCheck,OnDestroy {
     );
   }
   ngDoCheck(): void {
-    this.store.dispatch(new cartActions.TotalAmount());
+    this.store.dispatch(cartActions.TotalAmount());
   }
 
   ngOnDestroy(): void {

@@ -28,7 +28,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.route.params.subscribe(
             (params: Params) => {
                 this.id = +params['id'];
-                this.storeSub = this.productStore.products$.subscribe(
+                this.productStore.products$.subscribe(
                     stateData => {
                         this.product = stateData[this.id];
                     }
@@ -53,7 +53,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
 
     onAddToCart() {
-        this.store.dispatch(new cartActions.AddToCart(new Cart(this.product, 1, this.id)));
+        this.store.dispatch(cartActions.AddToCart(new Cart(this.product, 1, this.id)));
         let cartItems: Cart[];
         this.storeSub = this.store.select('cart').subscribe(
             cartState => {

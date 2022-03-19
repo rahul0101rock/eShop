@@ -62,7 +62,7 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
 
     onClose() {
         this.message = null;
-        this.store.dispatch(new cartActions.ClearCart());
+        this.store.dispatch(cartActions.ClearCart());
         auth.onAuthStateChanged(auth.getAuth(),
             user => {
                 if (user) {

@@ -24,7 +24,7 @@ export class CartItemComponent implements OnInit {
 
     onIncreaseCount() {
         const c = this.cartItem.count + 1;
-        this.store.dispatch(new cartActions.ChangeCount({ index: this.index, count: c }));
+        this.store.dispatch(cartActions.ChangeCount({ index: this.index, count: c }));
         auth.onAuthStateChanged(auth.getAuth(),
             user => {
                 if (user) {
@@ -36,7 +36,7 @@ export class CartItemComponent implements OnInit {
 
     onDecreaseCount() {
         const c = this.cartItem.count - 1;
-        this.store.dispatch(new cartActions.ChangeCount({ index: this.index, count: c }));
+        this.store.dispatch(cartActions.ChangeCount({ index: this.index, count: c }));
         auth.onAuthStateChanged(auth.getAuth(),
             user => {
                 if (user) {
@@ -47,7 +47,7 @@ export class CartItemComponent implements OnInit {
     }
 
     onRemoveItem() {
-        this.store.dispatch(new cartActions.RemoveFormCart(this.index));
+        this.store.dispatch(cartActions.RemoveFormCart({index: this.index}));
         let cartItems: Cart[];
         this.store.select('cart').subscribe(
             cartState => {
