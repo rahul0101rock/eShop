@@ -1,11 +1,8 @@
 import { OrderStore } from './store/order.store';
-import { Store } from '@ngrx/store';
 import { Order } from './order.model';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import * as auth from 'firebase/auth';
-import * as fromApp from '../store/app.reducer';
-import * as orderActions from './store/order.actions';
 import {
     Router, Resolve,
     RouterStateSnapshot,
