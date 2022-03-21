@@ -15,25 +15,25 @@ import { Observable, of } from 'rxjs';
 })
 export class OrderResolver implements Resolve<boolean> {
 
-    constructor(private http: HttpClient, private orderStore: OrderStore) { }
+    constructor(private http: HttpClient) { }
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | boolean {
-        auth.onAuthStateChanged(auth.getAuth(),
-            user => {
-                if (user) {
-                    this.http.get<Order[]>("https://eshop-rahul-default-rtdb.firebaseio.com/orders/" + user.uid + ".json").subscribe(
-                        orders => {
-                            if (orders) {
-                                this.orderStore.ClearOrder();
-                                for (let order of orders) {
-                                    this.orderStore.AddToOrder(order);
-                                }
-                            }
-                        }
-                    );
-                }
-            }
-        );
+        // auth.onAuthStateChanged(auth.getAuth(),
+        //     user => {
+        //         if (user) {
+        //             this.http.get<Order[]>("https://eshop-rahul-default-rtdb.firebaseio.com/orders/" + user.uid + ".json").subscribe(
+        //                 orders => {
+        //                     if (orders) {
+        //                         this.orderStore.ClearOrder();
+        //                         for (let order of orders) {
+        //                             this.orderStore.AddToOrder(order);
+        //                         }
+        //                     }
+        //                 }
+        //             );
+        //         }
+        //     }
+        // );
         return true;
     }
 }

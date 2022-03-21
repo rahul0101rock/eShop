@@ -1,3 +1,4 @@
+import { AddToCart } from './../../cart/store/cart.actions';
 import { ProductStore } from './../store/products.store';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
@@ -6,7 +7,6 @@ import { Cart } from './../../cart/cart.model';
 import { Product } from './../product.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
-import * as cartActions from '../../cart/store/cart.actions';
 import * as fromApp from '../../store/app.reducer';
 import * as auth from 'firebase/auth';
 
@@ -53,7 +53,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
 
     onAddToCart() {
-        this.store.dispatch(cartActions.AddToCart(new Cart(this.product, 1, this.id)));
+        this.store.dispatch(AddToCart(new Cart(this.product, 1, this.id)));
         let cartItems: Cart[];
         this.storeSub = this.store.select('cart').subscribe(
             cartState => {

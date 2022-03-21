@@ -1,4 +1,3 @@
-import { StoreModule } from '@ngrx/store';
 import { CartAmountComponent } from './cart-amount/cart-amount.component';
 import { CartItemComponent } from './cart-list/cart-item/cart-item.component';
 import { CartListComponent } from './cart-list/cart-list.component';

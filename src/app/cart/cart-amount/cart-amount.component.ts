@@ -1,30 +1,27 @@
-import { Store } from '@ngrx/store';
-import { Component, OnInit, OnDestroy, DoCheck } from '@angular/core';
+import { select, Store } from '@ngrx/store';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import * as fromApp from '../../store/app.reducer';
-import * as cartActions from '../store/cart.actions';
+import { TotalAmount } from '../store/cart.selectors';
 
 @Component({
     selector: 'app-cart-amount',
     templateUrl: './cart-amount.component.html',
-    styleUrls: ['./cart-amount.component.css']
+    styleUrls: ['./cart-amount.component.css'],
 })
-export class CartAmountComponent implements OnInit, DoCheck, OnDestroy {
-
+export class CartAmountComponent implements OnInit, OnDestroy {
     totalAmount: number = 0;
     storeSub!: Subscription;
 
-    constructor(private store: Store<fromApp.AppState>) { }
+    constructor(private store: Store<fromApp.AppState>) {}
 
     ngOnInit(): void {
-        this.storeSub = this.store.select('cart').subscribe(
-            cartState => {
+        this.storeSub = this.store
+            .select('cart')
+            .pipe(select(TotalAmount))
+            .subscribe((cartState) => {
                 this.totalAmount = cartState.totalAmount;
-            }
-        );
-    }
-    ngDoCheck(): void {
-        this.store.dispatch(cartActions.TotalAmount());
+            });
     }
 
     ngOnDestroy(): void {

@@ -16,6 +16,3 @@ export const RemoveFormCart = createAction(
     '[CART] REMOVE_FROM_CART',
     props<{ index: number }>()
 );
-export const TotalAmount = createAction(
-    '[CART] TOTAL_AMOUNT'
-);

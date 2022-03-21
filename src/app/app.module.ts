@@ -1,6 +1,8 @@
 import { OrderStore } from './order/store/order.store';
 import { appReducer } from './store/app.reducer';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -40,9 +42,14 @@ const analytics = getAnalytics(app);
         FormsModule,
         HttpClientModule,
         StoreModule.forRoot(appReducer),
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        StoreDevtoolsModule.instrument({
+            maxAge: 25,
+            logOnly: environment.production,
+            autoPause: true,
+        }),
     ],
-    providers: [OrderStore],
+    providers: [],
     bootstrap: [AppComponent]
 })
 export class AppModule { }

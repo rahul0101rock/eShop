@@ -1,7 +1,8 @@
+import { TotalAmount } from './../../cart/store/cart.selectors';
 import { OrderStore } from './../store/order.store';
 import { HttpClient } from '@angular/common/http';
 import { Subscription } from 'rxjs';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AddressService } from './../order-address/address.service';
 import { Cart } from './../../cart/cart.model';
@@ -14,7 +15,7 @@ import * as auth from 'firebase/auth';
 @Component({
     selector: 'app-order-summary',
     templateUrl: './order-summary.component.html',
-    styleUrls: ['./order-summary.component.css'],
+    styleUrls: ['./order-summary.component.css']
 })
 export class OrderSummaryComponent implements OnInit, OnDestroy {
     cartItems!: Cart[];
@@ -31,7 +32,8 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.storeSub = this.store.select('cart').subscribe((cartState) => {
+        this.storeSub = this.store.select('cart').pipe(select(TotalAmount))
+        .subscribe((cartState) => {
             this.cartItems = cartState.cartItems;
             this.totalAmount = cartState.totalAmount;
         });
