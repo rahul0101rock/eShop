@@ -1,14 +1,16 @@
 import { Cart } from './../cart/cart.model';
 import { Store } from '@ngrx/store';
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, takeUntil, Subject } from 'rxjs';
 import * as fromApp from '../store/app.reducer';
 
 @Injectable({
     providedIn: 'root'
 })
-export class OrderGuard implements CanActivate {
+export class OrderGuard implements CanActivate, OnDestroy {
+
+    sub$ = new Subject<void>();
 
     constructor(private router: Router, private store: Store<fromApp.AppState>) { }
 
@@ -16,7 +18,7 @@ export class OrderGuard implements CanActivate {
         route: ActivatedRouteSnapshot,
         state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
         let cartItems: Cart[] = [];
-        this.store.select('cart').subscribe(
+        this.store.select('cart').pipe(takeUntil(this.sub$)).subscribe(
             cartState => {
                 cartItems = cartState.cartItems;
             }
@@ -27,6 +29,11 @@ export class OrderGuard implements CanActivate {
             this.router.navigate(['/cart']);
             return false;
         }
+    }
+
+    ngOnDestroy(): void {
+        this.sub$.next();
+        this.sub$.unsubscribe();
     }
 
 }

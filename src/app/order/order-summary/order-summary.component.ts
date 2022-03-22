@@ -1,7 +1,7 @@
 import { TotalAmount } from './../../cart/store/cart.selectors';
 import { OrderStore } from './../store/order.store';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { Store, select } from '@ngrx/store';
 import { Router } from '@angular/router';
 import { AddressService } from './../order-address/address.service';
@@ -21,7 +21,7 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
     cartItems!: Cart[];
     totalAmount!: number;
     message!: string | null;
-    storeSub!: Subscription;
+    sub$ = new Subject<void>();
 
     constructor(
         private addressService: AddressService,
@@ -32,7 +32,7 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
     ) { }
 
     ngOnInit(): void {
-        this.storeSub = this.store.select('cart').pipe(select(TotalAmount))
+        this.store.select('cart').pipe(select(TotalAmount),takeUntil(this.sub$))
         .subscribe((cartState) => {
             this.cartItems = cartState.cartItems;
             this.totalAmount = cartState.totalAmount;
@@ -40,7 +40,8 @@ export class OrderSummaryComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.storeSub.unsubscribe();
+        this.sub$.next();
+        this.sub$.unsubscribe();
     }
 
     onOrderPlaced() {

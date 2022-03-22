@@ -1,5 +1,6 @@
-import { Store } from '@ngrx/store';
-import { map, Subscription } from 'rxjs';
+import { TotalAmount } from './store/cart.selectors';
+import { Store, select } from '@ngrx/store';
+import { map, Subject, takeUntil } from 'rxjs';
 import { Cart } from './cart.model';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import * as fromApp from '../store/app.reducer';
@@ -12,21 +13,23 @@ import * as fromApp from '../store/app.reducer';
 export class CartComponent implements OnInit, OnDestroy {
 
     cartItems!: Cart[];
-    storeSub!: Subscription;
+    totalAmount!: number;
+    sub$ = new Subject<void>();
 
     constructor(private store: Store<fromApp.AppState>) { }
 
     ngOnInit(): void {
-        this.storeSub = this.store.select('cart')
-            .pipe(map(cartState => cartState.cartItems))
+        this.store.select('cart').pipe(select(TotalAmount),takeUntil(this.sub$))
             .subscribe(
-                (cart: Cart[]) => {
-                    this.cartItems = cart;
+                cartState => {
+                    this.cartItems = cartState.cartItems;
+                    this.totalAmount = cartState.totalAmount;
                 }
             );
     }
 
     ngOnDestroy(): void {
-        this.storeSub.unsubscribe();
+        this.sub$.next();
+        this.sub$.unsubscribe();
     }
 }

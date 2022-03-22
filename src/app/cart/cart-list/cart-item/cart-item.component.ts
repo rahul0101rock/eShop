@@ -1,7 +1,8 @@
+import { Subject, takeUntil } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Store } from '@ngrx/store';
 import { Cart } from './../../cart.model';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import * as fromApp from '../../../store/app.reducer';
 import * as cartActions from '../../store/cart.actions';
 import * as auth from 'firebase/auth';
@@ -12,14 +13,21 @@ import * as auth from 'firebase/auth';
     templateUrl: './cart-item.component.html',
     styleUrls: ['./cart-item.component.css']
 })
-export class CartItemComponent implements OnInit {
+export class CartItemComponent implements OnInit,OnDestroy {
 
     @Input() cartItem!: Cart;
     @Input() index!: number;
+    sub$ = new Subject<void>();
 
     constructor(private store: Store<fromApp.AppState>, private http: HttpClient) { }
 
     ngOnInit(): void {
+
+    }
+
+    ngOnDestroy(): void {
+        this.sub$.next();
+        this.sub$.unsubscribe();
     }
 
     onIncreaseCount() {
@@ -49,7 +57,7 @@ export class CartItemComponent implements OnInit {
     onRemoveItem() {
         this.store.dispatch(cartActions.RemoveFormCart({ index: this.index }));
         let cartItems: Cart[];
-        this.store.select('cart').subscribe(
+        this.store.select('cart').pipe(takeUntil(this.sub$)).subscribe(
             cartState => {
                 cartItems = cartState.cartItems;
             }

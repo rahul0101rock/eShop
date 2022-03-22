@@ -1,7 +1,7 @@
 import { AddToCart } from './../../cart/store/cart.actions';
 import { ProductStore } from './../store/products.store';
 import { HttpClient } from '@angular/common/http';
-import { Subscription } from 'rxjs';
+import { takeUntil, Subject } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { Cart } from './../../cart/cart.model';
 import { Product } from './../product.model';
@@ -20,7 +20,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     product!: Product;
     id!: number;
     addedToCart = false;
-    storeSub!: Subscription;
+    sub$ = new Subject<void>();
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private store: Store<fromApp.AppState>, private productStore: ProductStore) { }
 
@@ -35,7 +35,7 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
                 );
             }
         );
-        this.storeSub = this.store.select('cart')
+        this.store.select('cart').pipe(takeUntil(this.sub$))
             .subscribe(
                 cartState => {
                     for (let cartItem of cartState.cartItems) {
@@ -49,13 +49,14 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
-        this.storeSub.unsubscribe();
+        this.sub$.next();
+        this.sub$.unsubscribe();
     }
 
     onAddToCart() {
         this.store.dispatch(AddToCart(new Cart(this.product, 1, this.id)));
         let cartItems: Cart[];
-        this.storeSub = this.store.select('cart').subscribe(
+        this.store.select('cart').pipe(takeUntil(this.sub$)).subscribe(
             cartState => {
                 cartItems = cartState.cartItems;
             }
