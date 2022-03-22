@@ -17,3 +17,14 @@ export const TotalAmount = createSelector(
         }
     }
 );
+
+export const TotalItems = createSelector(
+    selectCart,
+    (cartItems: Cart[]) => {
+        let cartItemsLength = 0;
+        for (let cartItem of cartItems) {
+            cartItemsLength += cartItem.count;
+        }
+        return cartItemsLength
+    }
+);
